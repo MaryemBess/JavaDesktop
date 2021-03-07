@@ -41,9 +41,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
+import javafx.util.converter.IntegerStringConverter;
 import javax.swing.JOptionPane;
 import service.DataValidation;
 import service.e_bookCRUD;
@@ -117,14 +119,18 @@ public class e_bookController implements Initializable {
         // TODO
         btnmodifier.setDisable(true);
         btnsupprimer.setDisable(true);
-        btnajouter.setDisable(true);
+        tableView.setEditable(true);
         e_bookCRUD book = new e_bookCRUD();
         oc = book.afficherBook();
         colid.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("id"));
         colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
+        colauteur.setCellFactory(TextFieldTableCell.forTableColumn());
         coltitre.setCellValueFactory(new PropertyValueFactory<e_book, String>("titre"));
+        coltitre.setCellFactory(TextFieldTableCell.forTableColumn());
         colgenre.setCellValueFactory(new PropertyValueFactory<e_book, String>("genre"));
+        colgenre.setCellFactory(TextFieldTableCell.forTableColumn());
         colcitation.setCellValueFactory(new PropertyValueFactory<e_book, String>("id_c"));
+        colcitation.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colevaluation.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("evaluation"));
         col_nb_fav.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("fav"));
 
@@ -139,7 +145,7 @@ public class e_bookController implements Initializable {
                 choices.add(new citation(rs.getInt("id"), rs.getString("auteur"), rs.getString("text")));
             }
             tfcitation.setItems(choices);
-            tfcitation.getSelectionModel().select(0);
+//            tfcitation.getSelectionModel().select(0);
 
         } catch (Exception ex) {
             System.out.println("ERREUR AFFICHAGE COMBOBOX");
@@ -160,8 +166,8 @@ public class e_bookController implements Initializable {
         int id_c = tfcitation.getSelectionModel().getSelectedItem().getId();
         e_bookCRUD P = new e_bookCRUD();
         e_book a = new e_book(tfauteur.getText(), tftitre.getText(), tfgenre.getText(), 0, id_c, 0);
-        
-     P.ajouterBook(a);
+
+        P.ajouterBook(a);
         JOptionPane.showMessageDialog(null, "ADD DONE");
         e_bookCRUD cs = new e_bookCRUD();
         oc = cs.afficherBook();
@@ -190,11 +196,10 @@ public class e_bookController implements Initializable {
         boolean alphabetauteur = DataValidation.textAlphabet(tfauteur, tflabauteur, "Please only enter letters from a - z");
         boolean alphabettitre = DataValidation.textAlphabet(tftitre, tflabtitre, "Please only enter letters from a - z");
         boolean alphabetgenre = DataValidation.textAlphabet(tfgenre, tflabgenre, "Please only enter letters from a - z");
-       
-        
+
         Aem = tableView.getSelectionModel().getSelectedItem();
-         int id = Aem.getId();
-         
+        int id = Aem.getId();
+
         e_bookCRUD e = new e_bookCRUD();
         int id_c = tfcitation.getSelectionModel().getSelectedItem().getId();
         e_book a = new e_book(Integer.parseInt(tfid.getText()), tfauteur.getText(), tftitre.getText(), tfgenre.getText(), 0, id_c, 0);
@@ -205,7 +210,7 @@ public class e_bookController implements Initializable {
         Optional<ButtonType> action = alert.showAndWait();
         if (action.get() == ButtonType.OK) {
             if (id != 0) {
-                 e.modifieBook(a);
+                e.modifieBook(a);
 
             }
         }
@@ -335,6 +340,7 @@ public class e_bookController implements Initializable {
             oc = cs.afficherBook();
             colid.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("id"));
             colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
+
             coltitre.setCellValueFactory(new PropertyValueFactory<e_book, String>("titre"));
             colgenre.setCellValueFactory(new PropertyValueFactory<e_book, String>("genre"));
             colcitation.setCellValueFactory(new PropertyValueFactory<e_book, String>("id_c"));

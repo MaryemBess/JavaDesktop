@@ -28,9 +28,9 @@ public class mainE_book extends Application {
         try {
 
             Parent root = FXMLLoader.load(getClass().getResource("e_book.fxml"));
-            
+
             Scene scene = new Scene(root);
-scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
             primaryStage.setTitle("Interface E_BOOK");
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -47,6 +47,4 @@ scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").to
         launch(args);
     }
 
-   
 }
-
