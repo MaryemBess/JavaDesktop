@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2 mars 2021, 09:18:40
+    Author     : Kenza
+*/
+
+.table-view{
+    
+    -fx-background-color : transparent;
+}
+.table-view:focused{
+    -fx-background-color:transparent;
+}
+.table-row-cell:odd{
+    -fx-background-color : #5e5551;
+    -fx-background-inserts:0, 0 0 1 0;
+}
+.table-row-cell:even{
+    -fx-background-color :   #978985;
+    -fx-background-inserts: 0, 0 0 1 0;
+}
