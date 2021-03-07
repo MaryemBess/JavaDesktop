@@ -21,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,6 +39,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -123,17 +125,49 @@ public class e_bookController implements Initializable {
         e_bookCRUD book = new e_bookCRUD();
         oc = book.afficherBook();
         colid.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("id"));
+        
         colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
         colauteur.setCellFactory(TextFieldTableCell.forTableColumn());
+        colauteur.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
+            @Override
+            public void handle(CellEditEvent<e_book, String> event) {
+                e_book e = event.getRowValue();
+                e_bookCRUD P = new e_bookCRUD();
+                P.modifiAuteur(colid.getCellData(Aem), event.getNewValue());
+                UpdateTableView();
+            }
+        });
+        
         coltitre.setCellValueFactory(new PropertyValueFactory<e_book, String>("titre"));
         coltitre.setCellFactory(TextFieldTableCell.forTableColumn());
+         coltitre.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
+            @Override
+            public void handle(CellEditEvent<e_book, String> event) {
+                e_book e = event.getRowValue();
+                e_bookCRUD P = new e_bookCRUD();
+                P.modifiTitre(colid.getCellData(Aem), event.getNewValue());
+                UpdateTableView();
+            }
+        });
+        
+        
         colgenre.setCellValueFactory(new PropertyValueFactory<e_book, String>("genre"));
         colgenre.setCellFactory(TextFieldTableCell.forTableColumn());
+        colgenre.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
+            @Override
+            public void handle(CellEditEvent<e_book, String> event) {
+                e_book e = event.getRowValue();
+                e_bookCRUD P = new e_bookCRUD();
+                P.modifiGenre(colid.getCellData(Aem), event.getNewValue());
+                UpdateTableView();
+            }
+        });
+        
         colcitation.setCellValueFactory(new PropertyValueFactory<e_book, String>("id_c"));
-        colcitation.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        //colcitation.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colevaluation.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("evaluation"));
         col_nb_fav.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("fav"));
-
+        tableView.getColumns().add(colauteur);
         tableView.setItems(oc);
 //        options = book.fillcombobox();
 //        tfcitation.setItems(options);
@@ -252,6 +286,20 @@ public class e_bookController implements Initializable {
             tftitre.setText(coltitre.getCellData(Aem).toString());
             tfauteur.setText(colauteur.getCellData(Aem).toString());
             tfgenre.setText(colgenre.getCellData(Aem).toString());
+            try {
+            String req = " select * from citations ";
+            ResultSet rs = myconnexion.getInstance().getCnx().createStatement().executeQuery(req);
+            ObservableList<citation> choices = FXCollections.observableArrayList();
+            while (rs.next()) {
+                choices.add(new citation(rs.getInt("id"), rs.getString("auteur"), rs.getString("text")));
+            }
+            tfcitation.setItems(choices);
+            tfcitation.getSelectionModel().select(1);
+
+        } catch (Exception ex) {
+            System.out.println("ERREUR AFFICHAGE COMBOBOX");
+            System.out.println(ex.getMessage());
+        }
         }
     }
 

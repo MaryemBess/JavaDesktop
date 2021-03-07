@@ -24,6 +24,7 @@ public class e_bookCRUD {
 
     Connection cx = myconnexion.getInstance().getCnx();
     Statement st;
+    ObservableList<e_book> oc = FXCollections.observableArrayList();
 
     public void ajouterBook(e_book book) {
 
@@ -66,6 +67,45 @@ public class e_bookCRUD {
         }
     }
 
+    public void modifiAuteur(int id, String auteur) {
+        try {
+            String req = "update e_books set auteur=? where id=?";
+            PreparedStatement pst = cx.prepareStatement(req);
+            pst.setString(1, auteur);
+            pst.setInt(2, id);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("ERREUR UPDATE Auteur");
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void modifiTitre(int id, String titre) {
+        try {
+            String req = "update e_books set titre=? where id=?";
+            PreparedStatement pst = cx.prepareStatement(req);
+            pst.setString(1, titre);
+            pst.setInt(2, id);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("ERREUR UPDATE TITRE");
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void modifiGenre(int id, String genre) {
+        try {
+            String req = "update e_books set genre=? where id=?";
+            PreparedStatement pst = cx.prepareStatement(req);
+            pst.setString(1, genre);
+            pst.setInt(2, id);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("ERREUR UPDATE GENRE");
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void supprimerBook(int id_book) {
         try {
             String req = "delete from e_books where Id =?";
@@ -78,7 +118,6 @@ public class e_bookCRUD {
             System.out.println(ex.getMessage());
         }
     }
-    ObservableList<e_book> oc = FXCollections.observableArrayList();
 
     public ObservableList afficherBook() {
 
@@ -104,4 +143,4 @@ public class e_bookCRUD {
         }
         return oc;
     }
-  }
+}
