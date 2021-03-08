@@ -16,7 +16,9 @@
       <Label fx:id="tflabauteur" layoutX="58.0" layoutY="196.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" text=" " textFill="RED" />
       <TextField fx:id="tfauteur" layoutX="58.0" layoutY="157.0" prefHeight="31.0" prefWidth="268.0" promptText="Auteur...." style="-fx-background-color: #e0d9d0;" />
       <TextField fx:id="tftitre" layoutX="58.0" layoutY="217.0" prefHeight="31.0" prefWidth="268.0" promptText="Titre...." style="-fx-background-color: #e0d9d0;" />
+      <Label fx:id="tflabtitre" layoutX="58.0" layoutY="254.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" textFill="RED" />
       <TextField fx:id="tfgenre" layoutX="58.0" layoutY="280.0" prefHeight="31.0" prefWidth="268.0" promptText="Genre du livre...." style="-fx-background-color: #e0d9d0;" />
+      <Label fx:id="tflabgenre" layoutX="58.0" layoutY="317.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" textFill="RED" />
       <ChoiceBox fx:id="tfcitation" layoutX="58.0" layoutY="346.0" prefHeight="31.0" prefWidth="268.0" style="-fx-background-color: #e0d9d0;" />
       <TableView fx:id="tableView" editable="true" layoutX="403.0" layoutY="116.0" onMouseClicked="#getSelected" prefHeight="402.0" prefWidth="687.0" style="-fx-background-color: #e0d9d0;">
         <columns>
@@ -29,7 +31,7 @@
             <TableColumn fx:id="col_nb_fav" prefWidth="79.0" text="nb de favoris" />
         </columns>
       </TableView>
-      <Button fx:id="btnajouter" layoutX="58.0" layoutY="429.0" mnemonicParsing="false" onAction="#SAVEbook" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #e46c74;" text="Ajouter">
+      <Button fx:id="btnajouter" layoutX="60.0" layoutY="393.0" mnemonicParsing="false" onAction="#SAVEbook" prefHeight="31.0" prefWidth="268.0" style="-fx-background-color: #e46c74;" text="Ajouter">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,7 +39,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnmodifier" layoutX="142.0" layoutY="429.0" mnemonicParsing="false" onAction="#UPDATEbook" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #e46c74;" text="Modifier">
+      <Button fx:id="btnmodifier" layoutX="200.0" layoutY="432.0" mnemonicParsing="false" onAction="#UPDATEbook" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #e46c74;" text="Modifier">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -45,7 +47,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnsupprimer" layoutX="226.0" layoutY="429.0" mnemonicParsing="false" onAction="#DELETEbook" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #e46c74;" text="Supprimer">
+      <Button fx:id="btnsupprimer" layoutX="60.0" layoutY="432.0" mnemonicParsing="false" onAction="#DELETEbook" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #e46c74;" text="Supprimer">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,13 +56,20 @@
             </ImageView>
          </graphic></Button>
       <TextField fx:id="search" layoutX="58.0" layoutY="469.0" onAction="#searchLabel" prefHeight="33.0" prefWidth="268.0" promptText="Search.." style="-fx-background-color: #8395ad;" />
-      <Label fx:id="tflabtitre" layoutX="58.0" layoutY="254.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" />
-      <Label fx:id="tflabgenre" layoutX="58.0" layoutY="317.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" />
-      <Button fx:id="btimprimer" layoutX="989.0" layoutY="531.0" mnemonicParsing="false" onAction="#Imprimer" style="-fx-background-color: #e46c74;" text="Imprimmer">
+      <Button fx:id="btimprimer" layoutX="977.0" layoutY="528.0" mnemonicParsing="false" onAction="#Imprimer" style="-fx-background-color: #e46c74;" text="Imprimmer">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/download.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnback" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backmain" prefHeight="43.0" prefWidth="94.0" style="-fx-background-color: #e46c74;" text="back">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back.png" />
                </image>
             </ImageView>
          </graphic>

@@ -33,6 +33,7 @@ import javafx.print.PrinterAttributes;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -47,6 +48,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javax.swing.JOptionPane;
 import service.DataValidation;
@@ -112,6 +114,8 @@ public class e_bookController implements Initializable {
     private Label tflabgenre;
     @FXML
     private Button btimprimer;
+    @FXML
+    private Button btnback;
 
     /**
      * Initializes the controller class.
@@ -442,5 +446,24 @@ public class e_bookController implements Initializable {
             }
         }
         node.getTransforms().remove(scale);
+    }
+
+    @FXML
+    private void backmain(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gerer_citation_ebook.fxml"));
+
+        try {
+            Parent root = loader.load();
+            btnback.getScene().setRoot(root);
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
+            Stage stage = new Stage();
+            stage.setTitle("Interface E_BOOK");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("ERREUR MAIN INTERFACE");
+            System.out.println(e.getMessage());
+        }
     }
 }

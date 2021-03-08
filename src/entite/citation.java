@@ -15,6 +15,12 @@ public class citation {
     private String text;
     private String genre;
 
+    public citation(String auteur, String text, String genre) {
+        this.auteur = auteur;
+        this.text = text;
+        this.genre = genre;
+    }
+
     public citation(int Id, String auteur,String text) {
         this.Id = Id;
         this.auteur = auteur;

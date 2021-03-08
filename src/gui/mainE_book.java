@@ -27,11 +27,11 @@ public class mainE_book extends Application {
     public void start(Stage primaryStage) {
         try {
 
-            Parent root = FXMLLoader.load(getClass().getResource("e_book.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("gerer_citation_ebook.fxml"));
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
-            primaryStage.setTitle("Interface E_BOOK");
+            primaryStage.setTitle("Interface Main");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
