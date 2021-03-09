@@ -8,10 +8,13 @@ package gui;
 import entite.citation;
 import java.net.URL;
 import entite.e_book;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -39,6 +42,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
@@ -48,6 +52,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javax.swing.JOptionPane;
@@ -105,6 +110,7 @@ public class e_bookController implements Initializable {
     private TextField search;
     @FXML
     private AnchorPane rootPane;
+
     private TextField tfcitation1;
     @FXML
     private Label tflabauteur;
@@ -116,6 +122,10 @@ public class e_bookController implements Initializable {
     private Button btimprimer;
     @FXML
     private Button btnback;
+    @FXML
+    private TextField tfimage;
+    @FXML
+    private TableColumn<e_book, String> colimage;
 
     /**
      * Initializes the controller class.
@@ -129,7 +139,7 @@ public class e_bookController implements Initializable {
         e_bookCRUD book = new e_bookCRUD();
         oc = book.afficherBook();
         colid.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("id"));
-        
+
         colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
         colauteur.setCellFactory(TextFieldTableCell.forTableColumn());
         colauteur.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
@@ -141,10 +151,10 @@ public class e_bookController implements Initializable {
                 UpdateTableView();
             }
         });
-        
+
         coltitre.setCellValueFactory(new PropertyValueFactory<e_book, String>("titre"));
         coltitre.setCellFactory(TextFieldTableCell.forTableColumn());
-         coltitre.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
+        coltitre.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
             @Override
             public void handle(CellEditEvent<e_book, String> event) {
                 e_book e = event.getRowValue();
@@ -153,8 +163,7 @@ public class e_bookController implements Initializable {
                 UpdateTableView();
             }
         });
-        
-        
+
         colgenre.setCellValueFactory(new PropertyValueFactory<e_book, String>("genre"));
         colgenre.setCellFactory(TextFieldTableCell.forTableColumn());
         colgenre.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
@@ -166,10 +175,11 @@ public class e_bookController implements Initializable {
                 UpdateTableView();
             }
         });
-        
+        colimage.setCellValueFactory(new PropertyValueFactory<e_book, String>("image"));
         colcitation.setCellValueFactory(new PropertyValueFactory<e_book, String>("id_c"));
         //colcitation.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colevaluation.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("evaluation"));
+
         col_nb_fav.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("fav"));
         tableView.getColumns().add(colauteur);
         tableView.setItems(oc);
@@ -203,7 +213,7 @@ public class e_bookController implements Initializable {
         System.out.println(auteur);
         int id_c = tfcitation.getSelectionModel().getSelectedItem().getId();
         e_bookCRUD P = new e_bookCRUD();
-        e_book a = new e_book(tfauteur.getText(), tftitre.getText(), tfgenre.getText(), 0, id_c, 0);
+        e_book a = new e_book(tfauteur.getText(), tftitre.getText(), tfgenre.getText(), 0, id_c, 0, tfimage.getText());
 
         P.ajouterBook(a);
         JOptionPane.showMessageDialog(null, "ADD DONE");
@@ -213,6 +223,7 @@ public class e_bookController implements Initializable {
         colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
         coltitre.setCellValueFactory(new PropertyValueFactory<e_book, String>("titre"));
         colgenre.setCellValueFactory(new PropertyValueFactory<e_book, String>("genre"));
+        colimage.setCellValueFactory(new PropertyValueFactory<e_book, String>("image"));
         colcitation.setCellValueFactory(new PropertyValueFactory<e_book, String>("id_c"));
         colevaluation.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("evaluation"));
         col_nb_fav.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("fav"));
@@ -222,6 +233,7 @@ public class e_bookController implements Initializable {
         tftitre.clear();
         tfgenre.clear();
         tfcitation1.clear();
+        tfimage.clear();
         chercher();
 
     }
@@ -277,6 +289,12 @@ public class e_bookController implements Initializable {
 
     @FXML
     private void getSelected(MouseEvent event) {
+//        e_book ev = tableView.getSelectionModel().getSelectedItem();
+//        tfid.setText(" " + ev.getId());
+//        tfauteur.setText(ev.getAuteur());
+//        tftitre.setText(ev.getTitre());
+//        tfgenre.setText(ev.getGenre());
+//        tfimage.setText(ev.getImage());
         Aem = tableView.getSelectionModel().getSelectedItem();
 
         if (Aem == null) {
@@ -290,20 +308,37 @@ public class e_bookController implements Initializable {
             tftitre.setText(coltitre.getCellData(Aem).toString());
             tfauteur.setText(colauteur.getCellData(Aem).toString());
             tfgenre.setText(colgenre.getCellData(Aem).toString());
-            try {
-            String req = " select * from citations ";
-            ResultSet rs = myconnexion.getInstance().getCnx().createStatement().executeQuery(req);
-            ObservableList<citation> choices = FXCollections.observableArrayList();
-            while (rs.next()) {
-                choices.add(new citation(rs.getInt("id"), rs.getString("auteur"), rs.getString("text")));
-            }
-            tfcitation.setItems(choices);
-            tfcitation.getSelectionModel().select(1);
+             
+            Aem = tableView.getSelectionModel().getSelectedItem();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
+//            try {
+//                Parent root = loader.load();
+//                DetailController dwc = loader.getController();
+//                dwc.setTitre(coltitre.getCellData(Aem).toString());
+//                dwc.setLabauteur(colauteur.getCellData(Aem).toString());
+//                dwc.setLabgenre(colgenre.getCellData(Aem).toString());
+//                dwc.setImage(colimage.getCellData(Aem).toString());
+//                tfauteur.getScene().setRoot(root);
+//
+//            } catch (IOException ex) {
+//                System.out.println(ex.getMessage());
+//            }
 
-        } catch (Exception ex) {
-            System.out.println("ERREUR AFFICHAGE COMBOBOX");
-            System.out.println(ex.getMessage());
-        }
+            try {
+                String req = " select * from citations ";
+                ResultSet rs = myconnexion.getInstance().getCnx().createStatement().executeQuery(req);
+                ObservableList<citation> choices = FXCollections.observableArrayList();
+                while (rs.next()) {
+                    choices.add(new citation(rs.getInt("id"), rs.getString("auteur"), rs.getString("text")));
+                }
+                tfcitation.setItems(choices);
+                tfcitation.getSelectionModel().select(1);
+
+            } catch (Exception ex) {
+                System.out.println("ERREUR AFFICHAGE COMBOBOX");
+                System.out.println(ex.getMessage());
+            }
+
         }
     }
 
@@ -334,6 +369,7 @@ public class e_bookController implements Initializable {
         colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
         coltitre.setCellValueFactory(new PropertyValueFactory<e_book, String>("titre"));
         colgenre.setCellValueFactory(new PropertyValueFactory<e_book, String>("genre"));
+        colimage.setCellValueFactory(new PropertyValueFactory<e_book, String>("image"));
         colcitation.setCellValueFactory(new PropertyValueFactory<e_book, String>("id_c"));
         colevaluation.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("evaluation"));
         col_nb_fav.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("fav"));
@@ -395,6 +431,7 @@ public class e_bookController implements Initializable {
 
             coltitre.setCellValueFactory(new PropertyValueFactory<e_book, String>("titre"));
             colgenre.setCellValueFactory(new PropertyValueFactory<e_book, String>("genre"));
+            colimage.setCellValueFactory(new PropertyValueFactory<e_book, String>("image"));
             colcitation.setCellValueFactory(new PropertyValueFactory<e_book, String>("id_c"));
             colevaluation.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("evaluation"));
             col_nb_fav.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("fav"));
@@ -465,5 +502,18 @@ public class e_bookController implements Initializable {
             System.out.println("ERREUR MAIN INTERFACE");
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    private void addimage(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("png files (*.png)", "*.png"));
+        File selectedFile = fc.showOpenDialog(null);
+        if (selectedFile != null) {
+            tfimage.setText(selectedFile.getParent());
+        } else {
+            System.out.println("File is not valid");
+        }
+
     }
 }

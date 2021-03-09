@@ -28,7 +28,7 @@ public class e_bookCRUD {
 
     public void ajouterBook(e_book book) {
 
-        String rqt = "insert into e_books (auteur,genre,favoris,titre,evaluation,id_c) values(?,?,?,?,?,?)";//précompilé
+        String rqt = "insert into e_books (auteur,genre,favoris,titre,evaluation,id_c,image) values(?,?,?,?,?,?,?)";//précompilé
 
         try {
             PreparedStatement pst = cx.prepareStatement(rqt);
@@ -39,6 +39,7 @@ public class e_bookCRUD {
             pst.setString(4, book.getTitre());
             pst.setInt(5, book.getEvaluation());
             pst.setInt(6, book.getId_c());
+            pst.setString(7, book.getImage());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -127,7 +128,7 @@ public class e_bookCRUD {
             st = cx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                e_book e = new e_book(1, "", "", "", 1, 1, 1);
+                e_book e = new e_book(1, "", "", "", 1, 1, 1,"");
                 e.setId(rs.getInt(1));
                 e.setAuteur(rs.getString(2));
                 e.setGenre(rs.getString(3));
@@ -135,6 +136,7 @@ public class e_bookCRUD {
                 e.setTitre(rs.getString(5));
                 e.setEvaluation(rs.getInt(6));
                 e.setId_c(rs.getInt(7));
+                e.setImage(rs.getString(8));
                 oc.add(e);
             }
         } catch (SQLException ex) {

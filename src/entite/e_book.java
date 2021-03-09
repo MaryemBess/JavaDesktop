@@ -5,6 +5,9 @@
  */
 package entite;
 
+import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
+
 /**
  *
  * @author Kenza
@@ -18,8 +21,18 @@ public class e_book {
     private int evaluation;
     private int id_c;
     private int fav;
+    private ComboBox citation;
+    private String image;
 
     public e_book() {
+    }
+
+    public e_book(String auteur, String titre, String genre, int id_c, String image) {
+        this.auteur = auteur;
+        this.titre = titre;
+        this.genre = genre;
+        this.id_c = id_c;
+        this.image = image;
     }
 
     public e_book(String auteur, String titre, String genre, int evaluation, int id_c, int fav) {
@@ -29,27 +42,49 @@ public class e_book {
         this.evaluation = evaluation;
         this.id_c = id_c;
         this.fav = fav;
+//        this.citation = new ComboBox();
     }
 
-   
-
-    public e_book(int Id, String auteur, String titre, String genre, int id_c) {
+    public e_book(int Id, String auteur, String titre, String genre, int id_c, ObservableList data) {
         this.Id = Id;
         this.auteur = auteur;
         this.titre = titre;
         this.genre = genre;
         this.id_c = id_c;
+        this.citation = new ComboBox();
     }
 
     public e_book(int Id, String auteur, String titre, String genre, int evaluation, int id_c, int fav) {
         this.Id = Id;
         this.auteur = auteur;
         this.titre = titre;
-
+//this.citation = new ComboBox();
         this.genre = genre;
         this.evaluation = evaluation;
         this.id_c = id_c;
         this.fav = fav;
+    }
+
+    public e_book(String auteur, String titre, String genre, int evaluation, int id_c, int fav, String image) {
+        this.auteur = auteur;
+        this.titre = titre;
+        this.genre = genre;
+        this.evaluation = evaluation;
+        this.id_c = id_c;
+        this.fav = fav;
+        this.citation = citation;
+        this.image = image;
+    }
+
+    public e_book(int Id, String auteur, String titre, String genre, int evaluation, int id_c, int fav, String image) {
+        this.Id = Id;
+        this.auteur = auteur;
+        this.titre = titre;
+        this.genre = genre;
+        this.evaluation = evaluation;
+        this.id_c = id_c;
+        this.fav = fav;
+        this.image = image;
     }
 
     public int getId() {
@@ -66,6 +101,14 @@ public class e_book {
 
     public String getGenre() {
         return genre;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public int getEvaluation() {
@@ -106,6 +149,14 @@ public class e_book {
 
     public void setFav(int fav) {
         this.fav = fav;
+    }
+
+    public void setCitation(ComboBox citation) {
+        this.citation = citation;
+    }
+
+    public ComboBox getCitation() {
+        return citation;
     }
 
     @Override
