@@ -66,16 +66,16 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnback" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backmain" prefHeight="43.0" prefWidth="94.0" style="-fx-background-color: #e46c74;" text="back">
+      <Button layoutX="266.0" layoutY="346.0" mnemonicParsing="false" onAction="#addimage" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: #8395ad;" text="Poster" />
+      <TextField fx:id="tfimage" layoutX="329.0" layoutY="346.0" prefHeight="31.0" prefWidth="63.0" visible="false" />
+      <Button fx:id="btnback" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#backmain" prefHeight="43.0" prefWidth="94.0" text="back">
          <graphic>
-            <ImageView fitHeight="150.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/back.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="266.0" layoutY="346.0" mnemonicParsing="false" onAction="#addimage" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: #8395ad;" text="Poster" />
-      <TextField fx:id="tfimage" layoutX="329.0" layoutY="346.0" prefHeight="31.0" prefWidth="63.0" visible="false" />
    </children>
 </AnchorPane>

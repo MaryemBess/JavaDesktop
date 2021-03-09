@@ -29,7 +29,7 @@ public class Gerer_citation_ebookController implements Initializable {
     private Button btnCitation;
 
     /**
-     * Initializes the controller class.
+//     * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

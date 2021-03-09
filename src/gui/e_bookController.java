@@ -304,25 +304,25 @@ public class e_bookController implements Initializable {
         } else {
             btnmodifier.setDisable(false);
             btnsupprimer.setDisable(false);
-            tfid.setText(colid.getCellData(Aem).toString());
-            tftitre.setText(coltitre.getCellData(Aem).toString());
-            tfauteur.setText(colauteur.getCellData(Aem).toString());
-            tfgenre.setText(colgenre.getCellData(Aem).toString());
+//            tfid.setText(colid.getCellData(Aem).toString());
+//            tftitre.setText(coltitre.getCellData(Aem).toString());
+//            tfauteur.setText(colauteur.getCellData(Aem).toString());
+//            tfgenre.setText(colgenre.getCellData(Aem).toString());
              
             Aem = tableView.getSelectionModel().getSelectedItem();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
-//            try {
-//                Parent root = loader.load();
-//                DetailController dwc = loader.getController();
-//                dwc.setTitre(coltitre.getCellData(Aem).toString());
-//                dwc.setLabauteur(colauteur.getCellData(Aem).toString());
-//                dwc.setLabgenre(colgenre.getCellData(Aem).toString());
-//                dwc.setImage(colimage.getCellData(Aem).toString());
-//                tfauteur.getScene().setRoot(root);
-//
-//            } catch (IOException ex) {
-//                System.out.println(ex.getMessage());
-//            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
+            try {
+                Parent root = loader.load();
+                DetailController dwc = loader.getController();
+                dwc.setTitre(coltitre.getCellData(Aem).toString());
+                dwc.setLabauteur(colauteur.getCellData(Aem).toString());
+                dwc.setLabgenre(colgenre.getCellData(Aem).toString());
+                dwc.setImage(colimage.getCellData(Aem).toString());
+                tfauteur.getScene().setRoot(root);
+
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
 
             try {
                 String req = " select * from citations ";
@@ -484,8 +484,7 @@ public class e_bookController implements Initializable {
         }
         node.getTransforms().remove(scale);
     }
-
-    @FXML
+@FXML
     private void backmain(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gerer_citation_ebook.fxml"));
 
@@ -515,5 +514,5 @@ public class e_bookController implements Initializable {
             System.out.println("File is not valid");
         }
 
-    }
+    }    
 }

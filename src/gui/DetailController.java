@@ -61,6 +61,7 @@ public class DetailController implements Initializable {
         File imageFile = new File(image);
         Image i=new Image(imageFile.toURI().toString());
         this.image.setImage(i);
+        
     }
 
     @FXML
