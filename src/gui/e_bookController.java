@@ -5,14 +5,20 @@
  */
 package gui;
 
+import com.itextpdf.text.DocumentException;
 import entite.citation;
 import java.net.URL;
 import entite.e_book;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Optional;
@@ -49,14 +55,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
+import javax.activation.DataSource;
 import javax.swing.JOptionPane;
 import service.DataValidation;
+import service.PDFdata;
 import service.e_bookCRUD;
 import utils.myconnexion;
 
@@ -126,6 +135,8 @@ public class e_bookController implements Initializable {
     private TextField tfimage;
     @FXML
     private TableColumn<e_book, String> colimage;
+    @FXML
+    private Button btimprimer1;
 
     /**
      * Initializes the controller class.
@@ -147,7 +158,17 @@ public class e_bookController implements Initializable {
             public void handle(CellEditEvent<e_book, String> event) {
                 e_book e = event.getRowValue();
                 e_bookCRUD P = new e_bookCRUD();
-                P.modifiAuteur(colid.getCellData(Aem), event.getNewValue());
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Vous voulez vraiment MODIFIER ce e_book ?!");
+                Optional<ButtonType> action = alert.showAndWait();
+                if (action.get() == ButtonType.OK) {
+                    if (colid.getCellData(Aem) != 0) {
+                        P.modifiAuteur(colid.getCellData(Aem), event.getNewValue());
+
+                    }
+                }
                 UpdateTableView();
             }
         });
@@ -159,7 +180,18 @@ public class e_bookController implements Initializable {
             public void handle(CellEditEvent<e_book, String> event) {
                 e_book e = event.getRowValue();
                 e_bookCRUD P = new e_bookCRUD();
-                P.modifiTitre(colid.getCellData(Aem), event.getNewValue());
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Vous voulez vraiment MODIFIER ce e_book ?!");
+                Optional<ButtonType> action = alert.showAndWait();
+                if (action.get() == ButtonType.OK) {
+                    if (colid.getCellData(Aem) != 0) {
+                        P.modifiTitre(colid.getCellData(Aem), event.getNewValue());
+
+                    }
+                }
                 UpdateTableView();
             }
         });
@@ -171,7 +203,18 @@ public class e_bookController implements Initializable {
             public void handle(CellEditEvent<e_book, String> event) {
                 e_book e = event.getRowValue();
                 e_bookCRUD P = new e_bookCRUD();
-                P.modifiGenre(colid.getCellData(Aem), event.getNewValue());
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Vous voulez vraiment MODIFIER ce e_book ?!");
+                Optional<ButtonType> action = alert.showAndWait();
+                if (action.get() == ButtonType.OK) {
+                    if (colid.getCellData(Aem) != 0) {
+                        P.modifiGenre(colid.getCellData(Aem), event.getNewValue());
+
+                    }
+                }
                 UpdateTableView();
             }
         });
@@ -289,12 +332,7 @@ public class e_bookController implements Initializable {
 
     @FXML
     private void getSelected(MouseEvent event) {
-//        e_book ev = tableView.getSelectionModel().getSelectedItem();
-//        tfid.setText(" " + ev.getId());
-//        tfauteur.setText(ev.getAuteur());
-//        tftitre.setText(ev.getTitre());
-//        tfgenre.setText(ev.getGenre());
-//        tfimage.setText(ev.getImage());
+
         Aem = tableView.getSelectionModel().getSelectedItem();
 
         if (Aem == null) {
@@ -304,24 +342,24 @@ public class e_bookController implements Initializable {
         } else {
             btnmodifier.setDisable(false);
             btnsupprimer.setDisable(false);
-//            tfid.setText(colid.getCellData(Aem).toString());
-//            tftitre.setText(coltitre.getCellData(Aem).toString());
-//            tfauteur.setText(colauteur.getCellData(Aem).toString());
-//            tfgenre.setText(colgenre.getCellData(Aem).toString());
-             
-            Aem = tableView.getSelectionModel().getSelectedItem();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
-            try {
-                Parent root = loader.load();
-                DetailController dwc = loader.getController();
-                dwc.setTitre(coltitre.getCellData(Aem).toString());
-                dwc.setLabauteur(colauteur.getCellData(Aem).toString());
-                dwc.setLabgenre(colgenre.getCellData(Aem).toString());
-                dwc.setImage(colimage.getCellData(Aem).toString());
-                tfauteur.getScene().setRoot(root);
+            tfid.setText(colid.getCellData(Aem).toString());
+            tftitre.setText(coltitre.getCellData(Aem).toString());
+            tfauteur.setText(colauteur.getCellData(Aem).toString());
+            tfgenre.setText(colgenre.getCellData(Aem).toString());
+            if (event.getButton() == MouseButton.SECONDARY) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
+                try {
+                    Parent root = loader.load();
+                    DetailController dwc = loader.getController();
+                    dwc.setTitre(coltitre.getCellData(Aem).toString());
+                    dwc.setLabauteur(colauteur.getCellData(Aem).toString());
+                    dwc.setLabgenre(colgenre.getCellData(Aem).toString());
+                    dwc.setImage(colimage.getCellData(Aem).toString());
+                    tfauteur.getScene().setRoot(root);
 
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
             }
 
             try {
@@ -473,18 +511,23 @@ public class e_bookController implements Initializable {
                 = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
         double scaleY
                 = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
-        Scale scale = new Scale(scaleX, scaleY);
+        double scaleZ
+                = pageLayout.getPrintableWidth() + pageLayout.getPrintableHeight() / node.getBoundsInParent().getDepth();
+
+        Scale scale = new Scale(scaleX, scaleY, scaleY);
         node.getTransforms().add(scale);
 
         if (job != null && job.showPrintDialog(node.getScene().getWindow())) {
             boolean success = job.printPage(pageLayout, node);
             if (success) {
                 job.endJob();
+
             }
         }
         node.getTransforms().remove(scale);
     }
-@FXML
+
+    @FXML
     private void backmain(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gerer_citation_ebook.fxml"));
 
@@ -514,5 +557,19 @@ public class e_bookController implements Initializable {
             System.out.println("File is not valid");
         }
 
-    }    
+    }
+
+    @FXML
+    private void GetPDF(ActionEvent event) {
+        try {
+            PDFdata pdf = new PDFdata();
+            pdf.e_bookPDF();
+        } catch (DocumentException ex) {
+            Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

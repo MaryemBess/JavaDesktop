@@ -87,6 +87,15 @@ public class e_book {
         this.image = image;
     }
 
+    public e_book(int Id, String auteur, String titre, String genre, int id_c, String image) {
+        this.Id = Id;
+        this.auteur = auteur;
+        this.titre = titre;
+        this.genre = genre;
+        this.id_c = id_c;
+        this.image = image;
+    }
+
     public int getId() {
         return Id;
     }

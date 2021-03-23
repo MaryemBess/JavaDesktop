@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="590.0" prefWidth="1118.0" style="-fx-background-color: #eeeae1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CitationController">
    <children>
@@ -63,5 +64,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label layoutX="403.0" layoutY="24.0" text="CITATION" textFill="#e46c74">
+         <font>
+            <Font name="System Bold" size="44.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

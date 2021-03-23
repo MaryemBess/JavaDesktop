@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="590.0" prefWidth="1118.0" style="-fx-background-color: #eeeae1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.e_bookController">
    <children>
@@ -57,11 +58,11 @@
             </ImageView>
          </graphic></Button>
       <TextField fx:id="search" layoutX="58.0" layoutY="469.0" onAction="#searchLabel" prefHeight="33.0" prefWidth="268.0" promptText="Search.." style="-fx-background-color: #8395ad;" />
-      <Button fx:id="btimprimer" layoutX="977.0" layoutY="528.0" mnemonicParsing="false" onAction="#Imprimer" style="-fx-background-color: #e46c74;" text="Imprimmer">
+      <Button fx:id="btimprimer" layoutX="977.0" layoutY="528.0" mnemonicParsing="false" onAction="#Imprimer" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #e46c74;" text="Capture">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/download.png" />
+                  <Image url="@../images/camera.png" />
                </image>
             </ImageView>
          </graphic>
@@ -73,6 +74,20 @@
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="403.0" layoutY="24.0" text="E_BOOK" textFill="#e46c74">
+         <font>
+            <Font name="System Bold" size="44.0" />
+         </font>
+      </Label>
+      <Button fx:id="btimprimer1" layoutX="857.0" layoutY="528.0" mnemonicParsing="false" onAction="#GetPDF" style="-fx-background-color: #e46c74;" text="Imprimmer">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/download.png" />
                </image>
             </ImageView>
          </graphic>

@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/service/e_bookCRUD.java</file>
-            <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/gui/DetailE_bookController.java</file>
+            <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/gui/Gerer_citation_ebookController.java</file>
+            <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/gui/mainE_book.java</file>
+            <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/gui/DetailController.java</file>
+            <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/gui/CitationController.java</file>
             <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/entite/e_book.java</file>
             <file>file:/C:/Users/Kenza/Desktop/cours/semestre2/PIdEV/Meliora-java/meliora/meliora/src/gui/e_bookController.java</file>
         </group>

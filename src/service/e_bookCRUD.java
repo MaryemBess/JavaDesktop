@@ -7,7 +7,6 @@ package service;
 
 import entite.e_book;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -128,7 +127,7 @@ public class e_bookCRUD {
             st = cx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                e_book e = new e_book(1, "", "", "", 1, 1, 1,"");
+                e_book e = new e_book(1, "", "", "", 1, 1, 1, "");
                 e.setId(rs.getInt(1));
                 e.setAuteur(rs.getString(2));
                 e.setGenre(rs.getString(3));
@@ -144,5 +143,22 @@ public class e_bookCRUD {
             System.out.println(ex.getMessage());
         }
         return oc;
+    }
+
+    public ObservableList<e_book> gete_bookListBack() {
+        ObservableList<e_book> list = FXCollections.observableArrayList();
+        String req = "SELECT * from e_books";
+        try {
+            st = cx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                e_book r = new e_book(rs.getInt("id"), rs.getString("auteur"), rs.getString("titre"), rs.getString("genre"), rs.getInt("id_c"), rs.getString("image"));
+                list.add(r);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Probléme list PDF");
+            System.out.println(ex.getMessage());
+        }
+        return list;
     }
 }

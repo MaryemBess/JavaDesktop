@@ -31,7 +31,7 @@ public class mainE_book extends Application {
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
-            primaryStage.setTitle("Interface Main");
+            primaryStage.setTitle("Interface ");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
