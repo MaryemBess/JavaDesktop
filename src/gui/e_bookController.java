@@ -9,6 +9,7 @@ import com.itextpdf.text.DocumentException;
 import entite.citation;
 import java.net.URL;
 import entite.e_book;
+import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -81,6 +82,7 @@ import jxl.write.WriteException;
 import service.DataValidation;
 import service.PDFdata;
 import service.e_bookCRUD;
+import service.excel;
 import service.sendMail;
 import utils.myconnexion;
 
@@ -385,6 +387,10 @@ public class e_bookController implements Initializable {
             tfauteur.setText(colauteur.getCellData(Aem).toString());
             tfgenre.setText(colgenre.getCellData(Aem).toString());
             if (event.getButton() == MouseButton.SECONDARY) {
+                 e_bookCRUD P = new e_bookCRUD();
+                    e_book a = new e_book( Integer.parseInt(colid.getCellData(Aem).toString()),colauteur.getCellData(Aem).toString(), coltitre.getCellData(Aem).toString(), colgenre.getCellData(Aem).toString(), Integer.parseInt(colevaluation.getCellData(Aem).toString()), Integer.parseInt(colcitation.getCellData(Aem).toString()), Integer.parseInt(col_nb_fav.getCellData(Aem).toString()), colimage.getCellData(Aem).toString());
+                    P.nombreVue(a);
+                    
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
                 try {
                     Parent root = loader.load();
@@ -394,6 +400,8 @@ public class e_bookController implements Initializable {
                     dwc.setLabgenre(colgenre.getCellData(Aem).toString());
                     dwc.setImage(colimage.getCellData(Aem).toString());
                     dwc.setlabcitation(Integer.parseUnsignedInt(colcitation.getCellData(Aem).toString()));
+                    
+                   
 
                     tfauteur.getScene().setRoot(root);
 
@@ -600,7 +608,7 @@ public class e_bookController implements Initializable {
     }
 
     @FXML
-    private void GetPDF(ActionEvent event) {
+    private void GetPDF(ActionEvent event) throws IOException {
         try {
             PDFdata pdf = new PDFdata();
             pdf.e_bookPDF();
@@ -612,134 +620,29 @@ public class e_bookController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Vous voulez ouvrir le fichier ?!");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK) {
+                   Desktop.getDesktop().open(new File("C:\\Users\\Kenza\\Desktop\\cours\\semestre2\\PIdEV\\Meliora-java\\meliora\\meliora\\e_book.pdf"));
+
+        }
     }
 
     @FXML
     private void jexcel(ActionEvent event) throws SQLException, IOException, WriteException {
-
-        WritableWorkbook myFirstWbook = null;
-        String requete = "SELECT * FROM e_books";
-        Statement st = cx.createStatement();
-        ResultSet rs = st.executeQuery(requete);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        WritableWorkbook workbook = Workbook.createWorkbook(baos);
-
-        // * Create Font ***//
-        WritableFont fontBlue = new WritableFont(WritableFont.TIMES, 10);
-        fontBlue.setColour(Colour.BLUE);
-
-        WritableFont fontRed = new WritableFont(WritableFont.TIMES, 10);
-        fontRed.setColour(Colour.RED);
-
-        WritableFont fontWhite = new WritableFont(WritableFont.TIMES, 10);
-        fontRed.setColour(Colour.WHITE);
-
-        // * Sheet 1 ***//
-        workbook = Workbook.createWorkbook(new File("Liste des e_books.xls"));
-        WritableSheet ws1 = workbook.createSheet("Liste : ", 0);
-        WritableCellFormat cellFormat3 = new WritableCellFormat();
-        cellFormat3.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN, jxl.format.Colour.WHITE);
-        java.io.File imageFile = new java.io.File("C:\\Users\\Kenza\\Desktop\\cours\\semestre2\\PIdEV\\Meliora-java\\meliora\\meliora\\src\\images\\150182275_2876778865978663_6412466972648118753_n (1).png");
-        BufferedImage input = ImageIO.read(imageFile);
-        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        ImageIO.write(input, "PNG", bao);
-        ws1.addImage(new WritableImage(0, 0, 4, 6, bao.toByteArray()));
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(0, 0, "", cellFormat3));
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(0, 1, "", cellFormat3));
-        ws1.setColumnView(2, 10);
-        ws1.addCell(new jxl.write.Label(0, 2, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(0, 3, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(0, 4, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(0, 5, "", cellFormat3));
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(1, 0, "", cellFormat3));
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(1, 1, "", cellFormat3));
-        ws1.setColumnView(2, 10);
-        ws1.addCell(new jxl.write.Label(1, 2, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(1, 3, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(1, 4, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(1, 5, "", cellFormat3));
-
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(2, 0, "", cellFormat3));
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(2, 1, "", cellFormat3));
-        ws1.setColumnView(2, 10);
-        ws1.addCell(new jxl.write.Label(2, 2, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(2, 3, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(2, 4, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(2, 5, "", cellFormat3));
-
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(3, 0, "", cellFormat3));
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(3, 1, "", cellFormat3));
-        ws1.setColumnView(2, 10);
-        ws1.addCell(new jxl.write.Label(3, 2, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(3, 3, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(3, 4, "", cellFormat3));
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(3, 5, "", cellFormat3));
-
-        ///
-        // * Header ***//
-        WritableCellFormat cellFormat1 = new WritableCellFormat(fontWhite);
-        cellFormat1.setBackground(Colour.AQUA);
-        cellFormat1.setAlignment(Alignment.CENTRE);
-        cellFormat1.setVerticalAlignment(VerticalAlignment.CENTRE);
-        cellFormat1.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN, jxl.format.Colour.BLUE2);
-
-        // * Data ***//
-        WritableCellFormat cellFormat2 = new WritableCellFormat(fontBlue);
-
-        // cellFormat2.setWrap(true);
-        cellFormat2.setBackground(Colour.WHITE);
-        cellFormat2.setAlignment(jxl.format.Alignment.CENTRE);
-        cellFormat2.setVerticalAlignment(VerticalAlignment.CENTRE);
-        cellFormat2.setWrap(true);
-        cellFormat2.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN, jxl.format.Colour.BLUE2);
-
-        // * Header ***//
-        ws1.setColumnView(0, 10);
-        ws1.addCell(new jxl.write.Label(0, 6, "Id", cellFormat1));
-
-        ws1.setColumnView(1, 15);
-        ws1.addCell(new jxl.write.Label(1, 6, "Titre", cellFormat1));
-
-        ws1.setColumnView(2, 10);
-        ws1.addCell(new jxl.write.Label(2, 6, "Genre", cellFormat1));
-
-        ws1.setColumnView(3, 10);
-        ws1.addCell(new jxl.write.Label(3, 6, "Auteur", cellFormat1));
-
-        int iRows = 7;
-        while ((rs != null) && (rs.next())) {
-            ws1.addCell(new jxl.write.Label(0, iRows, rs.getString("id"), cellFormat2));
-            ws1.addCell(new jxl.write.Label(1, iRows, rs.getString("titre"), cellFormat2));
-            ws1.addCell(new jxl.write.Label(2, iRows, rs.getString("genre"), cellFormat2));
-            ws1.addCell(new jxl.write.Label(3, iRows, rs.getString("auteur"), cellFormat2));
-
-            ++iRows;
+        try {
+            excel ex = new excel();
+            ex.e_bookexcel();
+            JOptionPane.showMessageDialog(null, "Excel file created.");
+        } catch (DocumentException ex) {
+            Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        workbook.write();
-        workbook.close();
-
-        System.out.println("Excel file created.");
-        JOptionPane.showMessageDialog(null, "Excel file created.");
-
     }
 }

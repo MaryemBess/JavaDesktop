@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMessage;
  * @author Kenza
  */
 public class sendMail {
-    private static final String FROM = "melioraproject@gmail.com";
+    private static final String FROM = "meliora.project2021@gmail.com";
     private static final String PASSWORD = "PiDev2021";
     
     

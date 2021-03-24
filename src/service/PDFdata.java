@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 
-
 /**
  *
  * @author Kenza
@@ -37,7 +36,6 @@ public class PDFdata {
         document.open();
         PDFdata pdf = new PDFdata();
         for (e_book r : res) {
-
             Paragraph reservation = new Paragraph("E_book n°" + r.getId());
             reservation.setAlignment(Element.ALIGN_CENTER);
             document.add(reservation);
@@ -49,13 +47,10 @@ public class PDFdata {
             Genre.setAlignment(Element.ALIGN_LEFT);
             Paragraph image = new Paragraph("URL de l'image : " + r.getImage());
             image.setAlignment(Element.ALIGN_LEFT);
-            Image img = Image.getInstance(r.getImage()+"");
-                img.setBorderColor(BaseColor.BLACK);
-                
-                img.getIndentationRight();
-                img.scaleToFit(50f, 800f);
-            
-           
+            Image img = Image.getInstance(r.getImage() + "");
+            img.setBorderColor(BaseColor.BLACK);
+            img.getIndentationRight();
+            img.scaleToFit(50f, 800f);
             Paragraph citation = new Paragraph("numero de la citation : " + r.getId_c());
             citation.setAlignment(Element.ALIGN_LEFT);
             document.add(Auteur);
@@ -64,12 +59,8 @@ public class PDFdata {
             document.add(citation);
             document.add(image);
             document.add(img);
-            
-            
-
         }
         document.close();
     }
 
-    
 }

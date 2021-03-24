@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.swing.JOptionPane;
 import utils.myconnexion;
 
 /**
@@ -160,5 +161,21 @@ public class e_bookCRUD {
             System.out.println(ex.getMessage());
         }
         return list;
+    }
+
+    public void nombreVue(e_book book) {
+        try {
+          
+            String req = "update e_books set favoris = ( favoris + " + 1 + ") where id=?";
+            PreparedStatement pst = cx.prepareStatement(req);
+//            int x=book.getFav()+1;
+//            pst.setInt(1, x);
+            pst.setInt(1, book.getId());
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("ERREUR incrementer nombre de vue");
+            System.out.println(ex.getMessage());
+        }
+//        JOptionPane.showMessageDialog(null, "increment DONE!");
     }
 }
