@@ -5,18 +5,23 @@
  */
 package service;
 
+//import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import entite.e_book;
 import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
+
 
 /**
  *
@@ -44,6 +49,13 @@ public class PDFdata {
             Genre.setAlignment(Element.ALIGN_LEFT);
             Paragraph image = new Paragraph("URL de l'image : " + r.getImage());
             image.setAlignment(Element.ALIGN_LEFT);
+            Image img = Image.getInstance(r.getImage()+"");
+                img.setBorderColor(BaseColor.BLACK);
+                
+                img.getIndentationRight();
+                img.scaleToFit(50f, 800f);
+            
+           
             Paragraph citation = new Paragraph("numero de la citation : " + r.getId_c());
             citation.setAlignment(Element.ALIGN_LEFT);
             document.add(Auteur);
@@ -51,6 +63,9 @@ public class PDFdata {
             document.add(Genre);
             document.add(citation);
             document.add(image);
+            document.add(img);
+            
+            
 
         }
         document.close();

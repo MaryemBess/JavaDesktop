@@ -14,12 +14,12 @@
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="590.0" prefWidth="1118.0" style="-fx-background-color: #eeeae1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.e_bookController">
    <children>
       <TextField fx:id="tfid" editable="false" layoutX="58.0" layoutY="115.0" prefHeight="31.0" prefWidth="268.0" promptText="id...." style="-fx-background-color: #e0d9d0;" />
-      <Label fx:id="tflabauteur" layoutX="58.0" layoutY="196.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" text=" " textFill="RED" />
-      <TextField fx:id="tfauteur" layoutX="58.0" layoutY="157.0" prefHeight="31.0" prefWidth="268.0" promptText="Auteur...." style="-fx-background-color: #e0d9d0;" />
+      <Label fx:id="tflabauteur" layoutX="58.0" layoutY="189.0" prefHeight="21.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" text=" " textFill="RED" />
+      <TextField fx:id="tfauteur" layoutX="58.0" layoutY="152.0" prefHeight="31.0" prefWidth="268.0" promptText="Auteur...." style="-fx-background-color: #e0d9d0;" />
       <TextField fx:id="tftitre" layoutX="58.0" layoutY="217.0" prefHeight="31.0" prefWidth="268.0" promptText="Titre...." style="-fx-background-color: #e0d9d0;" />
       <Label fx:id="tflabtitre" layoutX="58.0" layoutY="254.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" textFill="RED" />
       <TextField fx:id="tfgenre" layoutX="58.0" layoutY="280.0" prefHeight="31.0" prefWidth="268.0" promptText="Genre du livre...." style="-fx-background-color: #e0d9d0;" />
-      <Label fx:id="tflabgenre" layoutX="58.0" layoutY="317.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" textFill="RED" />
+      <Label fx:id="tflabgenre" layoutX="54.0" layoutY="317.0" prefHeight="18.0" prefWidth="268.0" style="-fx-alignment: #FF0000;" textFill="RED" />
       <ChoiceBox fx:id="tfcitation" layoutX="58.0" layoutY="346.0" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #e0d9d0;" />
       <TableView fx:id="tableView" editable="true" layoutX="403.0" layoutY="116.0" onMouseClicked="#getSelected" prefHeight="402.0" prefWidth="687.0" style="-fx-background-color: #e0d9d0;">
         <columns>
@@ -88,6 +88,15 @@
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/download.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btimprimer11" layoutX="737.0" layoutY="528.0" mnemonicParsing="false" onAction="#jexcel" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #e46c74;" text="Excel">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Logos-Excel-icon.png" />
                </image>
             </ImageView>
          </graphic>

@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entite.citation;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,9 +23,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +39,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,6 +49,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.MediaPlayerBuilder;
 import javafx.scene.media.MediaView;
+import utils.myconnexion;
 
 /**
  * FXML Controller class
@@ -69,24 +77,46 @@ public class DetailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-     public void setTitre(String titre) {
+    }
+
+    public void setTitre(String titre) {
         this.titre.setText(titre);
     }
-     public void setLabauteur(String labauteur) {
+
+    public void setLabauteur(String labauteur) {
         this.labauteur.setText(labauteur);
-        
-    }public void setLabgenre(String labgenre) {
-        this.labgenre.setText(labgenre);
-        
+
     }
+
+    public void setLabgenre(String labgenre) {
+        this.labgenre.setText(labgenre);
+
+    }
+
+    public void setlabcitation(int labcitation) {
+        Connection cx = myconnexion.getInstance().getCnx();
+        try {
+            String req = " select * from citations where id=" + labcitation + "";
+//            PreparedStatement pst = cx.prepareStatement(req);
+            ResultSet rs = myconnexion.getInstance().getCnx().createStatement().executeQuery(req);
+//            pst.setInt(1, labcitation);
+            while (rs.next()) {
+                this.labcitation.setText(rs.getString("auteur") + " : " + rs.getString("text"));
+            }
+        } catch (Exception ex) {
+            System.out.println("ERREUR AFFICHAGE detail");
+            System.out.println(ex.getMessage());
+        }
+//        this.labcitation.setText(""+labcitation);
+
+    }
+
     public void setImage(String image) {
-       
+
         File imageFile = new File(image);
-        Image i=new Image(imageFile.toURI().toString());
+        Image i = new Image(imageFile.toURI().toString());
         this.image.setImage(i);
-        
-       
+
     }
 
     @FXML

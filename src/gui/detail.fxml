@@ -18,15 +18,11 @@
       <Label layoutX="679.0" layoutY="185.0" text="Auteur:" />
       <Label layoutX="681.0" layoutY="244.0" text="Genre:" />
       <Label layoutX="675.0" layoutY="307.0" text="Citation:" />
-      <Label fx:id="labauteur" layoutX="831.0" layoutY="178.0">
+      <Label fx:id="labauteur" layoutX="831.0" layoutY="178.0" prefHeight="31.0" prefWidth="240.0">
          <font>
             <Font size="21.0" />
          </font></Label>
-      <Label fx:id="labgenre" layoutX="831.0" layoutY="237.0">
-         <font>
-            <Font size="21.0" />
-         </font></Label>
-      <Label fx:id="labcitation" layoutX="831.0" layoutY="300.0">
+      <Label fx:id="labgenre" layoutX="831.0" layoutY="237.0" prefHeight="31.0" prefWidth="240.0">
          <font>
             <Font size="21.0" />
          </font></Label>
@@ -39,5 +35,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="labcitation" alignment="TOP_LEFT" layoutX="831.0" layoutY="307.0" prefHeight="221.0" prefWidth="240.0" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
