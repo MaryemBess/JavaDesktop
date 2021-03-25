@@ -98,14 +98,14 @@ public class Service_Client implements CRUD<Client>{
                 currentUser.setRoles(rs.getString(12));
                 
                     TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
+           // AnimationType type = AnimationType.POPUP;
         
-            tray.setAnimationType(type);
+        //   tray.setAnimationType(type);
             tray.setTitle("LOGGED IN");
             tray.setMessage("WELCOME Mr "+""+currentUser.getUsername());
             tray.setNotificationType(NotificationType.SUCCESS);
-            tray.dismiss();
-            tray.showAndDismiss(Duration.millis(3000));
+        // tray.dismiss();
+            tray.showAndDismiss(Duration.seconds(3));
                  
                    
                     return 1;

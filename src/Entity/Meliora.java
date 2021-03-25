@@ -28,7 +28,7 @@ public class Meliora extends Application {
     @Override
     public void start(Stage stage) throws IOException {
     
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/UserInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ContentArea.fxml"));
 
        
         Scene scene = new Scene(root);

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author lenovo
  */
 public class DataSource {
-        Connection cnx;
+       public Connection cnx;
         String url="jdbc:mysql://localhost:3306/meliora";
         String login="root";
         String pwd="";
@@ -42,7 +42,11 @@ public class DataSource {
     public Connection getCnx() {
         return cnx;
     }
+
+    public Connection getConnect() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-        
+    
     
 }

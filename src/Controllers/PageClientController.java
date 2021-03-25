@@ -13,11 +13,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -94,22 +98,21 @@ public class PageClientController implements Initializable {
   
 }
 
-//    @FXML
-//    private void Logout(ActionEvent event) throws IOException {
-//         Alert alert = new Alert(AlertType.CONFIRMATION);
-//        alert.setTitle("LOGOUT");
-//        alert.setHeaderText("You're about to logout!");
-//        alert.setContentText("Do you want to save before exiting");
-//        if(alert.showAndWait().get() == ButtonType.OK){
-//        stage = (Stage) scenePane.getScene().getWindow();
-//        System.out.println("You successfully logged out ! ");
-//        DynamicView.Change_content(contents,"Login");
-//        }
-//        
-//    }
 
     @FXML
     private void logout(ActionEvent event) {
+           try {
+           
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("/GUI/Login.fxml")); //
+            Parent root =Loader.load();
+            LoginController r = Loader.getController();
+            logoutbutton.getScene().setRoot(root);
+        
+           
+        } catch (IOException ex) {
+            Logger.getLogger(PageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     }
 

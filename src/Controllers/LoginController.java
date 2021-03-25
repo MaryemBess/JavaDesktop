@@ -58,6 +58,7 @@ import javafx.scene.Parent;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
 import javafx.scene.control.CheckBox;
@@ -119,8 +120,6 @@ public class LoginController implements Initializable {
     private JFXButton btnlSignUp;
     Preferences preferences;
 
-    @FXML
-    private JFXCheckBox rme;
     PreparedStatement ps;
     ResultSet res;
     @FXML
@@ -135,11 +134,11 @@ public class LoginController implements Initializable {
     @FXML
     private Label lblErrorMail;
     @FXML
-    private JFXButton btnVerif;
-    @FXML
     private AnchorPane anchorSignIN;
     @FXML
     private AnchorPane anchorSup;
+    @FXML
+    private Button forgot;
 
     /**
      * Initializes the controller class.
@@ -243,7 +242,7 @@ public class LoginController implements Initializable {
         String pattern = "\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b";
         return email.matches(pattern);
     }
-
+//acceder a son compte
     @FXML
     private void Login(ActionEvent event) throws SQLException, IOException {
        
@@ -252,7 +251,7 @@ public class LoginController implements Initializable {
         UserSession daoU = new UserSession();
         User result = daoU.login(email.getText());
               
-            System.out.println("verfirrrrrr");
+            System.out.println("verif");
 
         if (BCrypt.checkpw(password.getText(), result.getPassword().replaceFirst("y","a")))
         {    
@@ -320,17 +319,16 @@ public class LoginController implements Initializable {
        }
            }
      
-
+//lorsque on clique sur signup thezek lel signup page 
     @FXML
     private void SignUp(ActionEvent event) throws IOException {
         try {
             stage = (Stage) btnlSignUp.getScene().getWindow();
-            //Stage Stage=new Stage();
-            //FXMLLoader loader=new FXMLLoader();
+           
              anchorSup = FXMLLoader.load(getClass().getResource("/GUI/SignUp.fxml"));
              root.getChildren().add(anchorSup);
             Scene scene = new Scene(root);
-            //  stage.getIcons().add(new Image(getClass().getResource("/icons/hhh.png").toExternalForm()));
+           
 
             stage.setScene(scene);
             stage.centerOnScreen();
@@ -346,9 +344,7 @@ public class LoginController implements Initializable {
         }
         // LoginController.showInscription();
     }
-
-
-    @FXML
+//email de verification contenant un code 
     private void verify(ActionEvent event) throws SQLException {
         Services.Service_Client client = new Service_Client();
         Services.Service_Coach coach = new Service_Coach();
@@ -426,4 +422,21 @@ public class LoginController implements Initializable {
           
        }
     }}
+
+
+    @FXML
+    private void forgot(ActionEvent event) {
+          try {
+           
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("/GUI/forgotpwd.fxml")); //
+            Parent root =Loader.load();
+            //LoginController r = Loader.getController();
+            forgot.getScene().setRoot(root);
+        
+           
+        } catch (IOException ex) {
+            Logger.getLogger(PageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+    }
 }

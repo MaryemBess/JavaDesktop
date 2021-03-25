@@ -28,6 +28,7 @@ import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -75,6 +76,10 @@ public class ContentAreaController implements Initializable {
     Stage stage,s;
     @FXML
     private AnchorPane scenePane;
+    @FXML
+    private Label stat;
+    @FXML
+    private Label idC;
 
     /**
      * Initializes the controller class.
@@ -124,23 +129,7 @@ public class ContentAreaController implements Initializable {
   
 }
     
-//
-//    @FXML
-//    private void logout(ActionEvent event) throws IOException {
-//        
-//        Alert alert = new Alert(AlertType.CONFIRMATION);
-//        alert.setTitle("LOGOUT");
-//        alert.setHeaderText("You're about to logout!");
-//        alert.setContentText("Do you want to save before exiting");
-//        if(alert.showAndWait().get() == ButtonType.OK){
-//        
-//        System.out.println("You successfully logged out ! ");
-//        DynamicView.Change_content(contents,"Login");
-//       
-//        
-//    }
-//        
-//    }
+
 @FXML
   public void logout(ActionEvent t) throws SQLException {
 
@@ -157,6 +146,20 @@ public class ContentAreaController implements Initializable {
         }
 
     }
-}
+
+//         DynamicView.Change_content(contents,"stat.fxml");
+//    }
+
     
+   
+    @FXML
+    private void statistiques(MouseEvent event) throws IOException {
+        DynamicView.Change_content(contents,"stat");
+        
+}
+    @FXML
+    void CloseWin(MouseEvent event) {
+System.exit(0);
+    }
+}   
 

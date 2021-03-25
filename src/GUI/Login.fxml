@@ -106,35 +106,9 @@
                                  </textFill>
                               </JFXButton>
                              
-                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn-login-with-t" stylesheets="@../CascadingSteelsSheets/Style.css" text=" Sign in with Twitter" GridPane.halignment="CENTER" GridPane.rowIndex="7">
-                                 <font>
-                                    <Font name="Oswald Medium" size="16.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Images/tw-logo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn-login-with-f" stylesheets="@../CascadingSteelsSheets/Style.css" text="Sign in with Facebook" GridPane.halignment="CENTER" GridPane.rowIndex="8">
-                                 <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Images/fb-logo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <font>
-                                    <Font name="Oswald Medium" size="16.0" />
-                                 </font>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="162.0" styleClass="btn-forgot-pwd" stylesheets="@../CascadingSteelsSheets/Style.css" text="Forgot password?" underline="true" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                              </Button>
+                             
+                             
+                              
                               <Label alignment="CENTER" maxWidth="146.0" prefHeight="50.0" prefWidth="146.0" stylesheets="@../CascadingSteelsSheets/Style.css" text="Sign In" GridPane.halignment="CENTER">
                                  <font>
                                     <Font name="Candara Bold" size="31.0" />

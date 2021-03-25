@@ -71,8 +71,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javax.mail.MessagingException;
 import org.mindrot.jbcrypt.BCrypt;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -241,7 +244,7 @@ public class SignUpController implements Initializable {
         }
         return true;
     }
-
+//mdp strong weak average
     private int calculatePasswordStrength(String password) {
 
         //total score of password
@@ -278,7 +281,7 @@ public class SignUpController implements Initializable {
         return iPasswordScore;
 
     }
-
+//verif si formulaire est rempli sinon si vide msg d'erreur
     private boolean isFormValid() {
         String errorLog = "";
         boolean flag = true;
@@ -374,7 +377,7 @@ public class SignUpController implements Initializable {
             return false;
         }
     }
-
+//ctrl de saisie dateNaissance(champ pas vide)
     public boolean validateDateP() {
         if (birthDate.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -401,7 +404,7 @@ public class SignUpController implements Initializable {
 
         }
     }
-
+//ctrl de saisie mdp
     public boolean validatePasswordC() {
         // Pattern p = Pattern.compile("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,}");
         // Matcher m = p.matcher(pwdC.getText());
@@ -419,7 +422,7 @@ public class SignUpController implements Initializable {
         }
 
     }
-
+//creation d'un compte
     @FXML
     private void CreateAccount(ActionEvent event) throws SQLException, FileNotFoundException, MalformedURLException, IOException, MessagingException {
         SendingMail sm = new SendingMail();
@@ -577,6 +580,15 @@ public class SignUpController implements Initializable {
             }
 
         }
+         TrayNotification tray = new TrayNotification();
+           // AnimationType type = AnimationType.POPUP;
+        
+        //   tray.setAnimationType(type);
+            tray.setTitle("LOGGED IN");
+            tray.setMessage("WELCOME Mr "+""+currentUser.getUsername());
+            tray.setNotificationType(NotificationType.SUCCESS);
+        // tray.dismiss();
+            tray.showAndDismiss(Duration.seconds(4));
     }
 
     private void clearFields() {
@@ -589,7 +601,7 @@ public class SignUpController implements Initializable {
         phoneNumber.setText(null);
 
     }
-
+//dernier user inscrit
     private int autoOrderNOP() throws SQLException {
         int nop = 0;
         try {
@@ -618,7 +630,7 @@ public class SignUpController implements Initializable {
             ((Node) event.getSource()).getScene().getWindow().hide();
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            Pane root = loader.load(getClass().getResource("/GUI/Login.fxml"));
+            Pane root = loader.load(getClass().getResource("/GUI/PageClient.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

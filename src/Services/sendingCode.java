@@ -6,70 +6,62 @@
 package Services;
 
 import CONNECTION.DataSource;
-
+import java.awt.Component;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.mail.Message;
-
+import javax.mail.MessagingException;
 import javax.mail.Session;
-
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Maryem
+ * @author MaryemBessrour
  */
-public class SendingMail {
+public class sendingCode {
+int randomCode;
+    public sendingCode() {
+    }
     
-     
-    public SendingMail() {
-    }
-
-    public int GenerateCode() {
-        Random rand = new Random(System.currentTimeMillis());
-
-        int red = rand.nextInt(999999);
-        return red;
-    }
-
-    public void SendEmail(String email) {
-        int code = GenerateCode();
+    public void Sendcode(String email) throws AddressException, MessagingException{
         PreparedStatement pst, pst2;
         ResultSet rs, rs2;
         DataSource con;
-
-        try {
-            String req = "UPDATE user set confirmation_token=? where email=? ";
+        
+        
+            String req = "SELECT * from user where email=? ";
             try {
                 pst2 = DataSource.getInstance().getCnx().prepareStatement(req);
-                pst2.setInt(1, code);
+                pst2.setInt(1, randomCode);
                 pst2.setString(2, email);
-                pst2.executeUpdate();
+                pst2.executeQuery();
 
             } catch (SQLException ex) {
                 Logger.getLogger(Service_Client.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println("code " + code + " ");
+
+Random rand = new Random();
+randomCode=rand.nextInt(999999);
+System.out.println("code " + randomCode + " ");
             String host = "smtp.gmail.com";
             String user = "mimibessrour@gmail.com";
             String pass = "ALLinone1723";
             String to = email;
             String from = "mimibessrour@gmail.com";
-            String messageText = "This is confirmation number for your expert programming account. Please insert this number to activate your account = " + code + " Thanks for being one of us ";
-            String subject = " Email de Confirmation ";
+            String messageText = "This is confirmation number for your expert programming account. Please insert this number to activate your account = " + randomCode + " Thanks for being one of us ";
+            String subject = "Fixit Email Confirmation ";
             boolean sessionDebug = true;
 
             Properties props = System.getProperties();
-
-            props.put("mail.smtp.starttls.enable", "true");
+ props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.host", host);
             props.put("mail.smtp.port", "587");
             props.put("mail.smtp.auth", "true");
@@ -83,7 +75,7 @@ public class SendingMail {
             InternetAddress[] address = {new InternetAddress(to)};
             msg.setRecipients(Message.RecipientType.TO, address);
             msg.setSubject(subject);
-            msg.setSentDate(new Date());
+            
             msg.setText(messageText);
 
             javax.mail.Transport transport = mailSession.getTransport("smtp");
@@ -94,14 +86,10 @@ public class SendingMail {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-    }
-    
-    
-    
-    
-    
-    
 }
-    
-
+        
+        
+        
+        
+    }
 

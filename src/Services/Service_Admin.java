@@ -57,22 +57,17 @@ public class Service_Admin implements CRUD<Admin>{
             pst = conn.getCnx().prepareStatement("SELECT * FROM user WHERE  email = ? and password = ? ");
             pst.setString(1, si.getEmail());
             pst.setString(2, si.getPassword());
-         
-            //pst.setInt(3, 1);
             rs = pst.executeQuery();
      if (rs != null) {
                 while (rs.next()) {
                     System.out.println(rs.getInt(6));
                     System.out.println(rs.getString(1));
                     System.out.println(rs.getString(2));
-                 currentUser.setPassword(rs.getString(8));
-                    //currentUser.setIdU(rs.getInt(4));
+                currentUser.setPassword(rs.getString(8));
                 currentUser.setUsername(rs.getString(2));
                 currentUser.setEmail(rs.getString(4));
                 currentUser.setRoles(rs.getString(12));
-                //currentUser.setDesactivate(rs.getInt(13));
                 currentUser.setBirthDate(rs.getDate(14));
-                //currentUser.setImage(rs.getString(10));
                 
                   
                     TrayNotification tray = new TrayNotification();

@@ -62,6 +62,7 @@ public class ReclamAjoutController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    //supposee yaaref el reclamation mta3 enehou user bedhabt 
  private void userid(){
         Connection conn=DataSource.getInstance().getCnx();
         String username = id_client.getText();
@@ -95,8 +96,6 @@ public class ReclamAjoutController implements Initializable {
    @FXML
     private void ajoutrecl(ActionEvent event) throws IOException {
         try {
-        //    int idc =currentUser.getIdU();
-             // int idc=Integer.parseInt(id_client.getText());
             String sujet = sjt.getText();
             String description = desc.getText();
             String time = date.getText();
@@ -105,14 +104,7 @@ public class ReclamAjoutController implements Initializable {
             Reclamation R = new Reclamation(sujet,description,time,currentUser.getId());
             
             sp.ajoutReclam(R);
-            
-           /* FXMLLoader loader = new FXMLLoader
-                        (getClass6
-                         .getResource("/"));
-            Parent root = loader.load();*/
-            
-            
-           
+  
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -121,7 +113,7 @@ public class ReclamAjoutController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                    System.out.println(("truedddddddddd"+currentUser));
+                    System.out.println(("true"+currentUser));
                     id_client.setText(currentUser.getUsername());
 
          startClock();
