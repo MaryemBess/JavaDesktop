@@ -11,7 +11,7 @@ import static com.vonage.quickstart.sms.Util.envVar;
 
 public class SendMessage {
 
-    public void sms() throws Exception {
+    public static void sms() throws Exception {
         configureLogging();
 
         String VONAGE_API_KEY = envVar("6fb6fad4");

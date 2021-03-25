@@ -90,6 +90,8 @@ public class Add_coachController implements Initializable {
     private Button btnShowRevs;
     @FXML
     private TableColumn<coach, Double> colrating;
+    @FXML
+    private Button stat;
   
 
     @Override
@@ -266,6 +268,23 @@ public class Add_coachController implements Initializable {
             stage.setTitle("Reviews");
             stage.setScene(new  Scene(root));
             stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void GotoStat(ActionEvent event) {
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
+            Parent root = loader.load();
+            FXMLController pdc = loader.getController();
+            Stage stage = new Stage();
+            
+            stage.setTitle("Top 3 reviews");
+            stage.setScene(new  Scene(root));
+            stage.showAndWait();
+            updateTable();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

@@ -59,6 +59,22 @@ public class CoachCRUD {
         }
         return list;
     }
+        public static ObservableList<coach> showTopCoachs() {
+        ObservableList<coach> list = FXCollections.observableArrayList();
+        String requete = "select * from coach order by rating desc";
+
+        try {
+            PreparedStatement pst
+                    = new MyConnection().cn.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(new coach(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getInt("nb_likes"),rs.getInt("nb_dislikes"), rs.getString("image"),rs.getDouble("rating")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CoachCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 
     public void modCoach(coach c) {
         try {

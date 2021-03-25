@@ -33,9 +33,9 @@ public class Util {
      */
     public static String envVar(String key) {
         String value = System.getenv(key);
-        if (value == null) {
-            throw new IllegalArgumentException("You must provide the " + key + " environment variable!");
-        }
+//        if (value == null) {
+//            throw new IllegalArgumentException("You must provide the " + key + " environment variable!");
+//        }
         return value;
     }
 
