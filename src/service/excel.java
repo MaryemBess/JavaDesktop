@@ -35,8 +35,9 @@ import utils.myconnexion;
  * @author Kenza
  */
 public class excel {
+
     public void e_bookexcel() throws FileNotFoundException, DocumentException, MalformedURLException, IOException, SQLException, WriteException {
-         WritableWorkbook myFirstWbook = null;
+        WritableWorkbook myFirstWbook = null;
         String requete = "SELECT * FROM e_books";
         Connection cx = myconnexion.getInstance().getCnx();
         Statement st = cx.createStatement();
@@ -118,7 +119,7 @@ public class excel {
         ///
         // * Header ***//
         WritableCellFormat cellFormat1 = new WritableCellFormat(fontWhite);
-        cellFormat1.setBackground(Colour.AQUA);
+        cellFormat1.setBackground(Colour.TAN);
         cellFormat1.setAlignment(Alignment.CENTRE);
         cellFormat1.setVerticalAlignment(VerticalAlignment.CENTRE);
         cellFormat1.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN, jxl.format.Colour.BLUE2);
@@ -159,9 +160,6 @@ public class excel {
         workbook.close();
 
         System.out.println("Excel file created.");
-     
 
     }
-    }
-    
-    
+}

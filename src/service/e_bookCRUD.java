@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 import javax.swing.JOptionPane;
 import utils.myconnexion;
 
@@ -177,5 +178,20 @@ public class e_bookCRUD {
             System.out.println(ex.getMessage());
         }
 //        JOptionPane.showMessageDialog(null, "increment DONE!");
+    }
+    public ObservableList<PieChart.Data> getDataStat(){
+        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
+         String req = "SELECT evaluation, favoris from e_books ";
+        try {
+            st = cx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+           while(rs.next()){
+               data.add(new PieChart.Data (rs.getString("evaluation"),rs.getInt("favoris")));
+           }
+        } catch (SQLException ex) {
+           System.out.println("Probléme");
+            System.out.println(ex.getMessage());
+        }
+        return data;
     }
 }

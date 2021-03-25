@@ -46,6 +46,7 @@ import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -85,6 +86,8 @@ import service.e_bookCRUD;
 import service.excel;
 import service.sendMail;
 import utils.myconnexion;
+import javafx.scene.chart.PieChart;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -156,6 +159,10 @@ public class e_bookController implements Initializable {
     private Button btimprimer1;
     @FXML
     private Button btimprimer11;
+    @FXML
+    private PieChart pie;
+    @FXML
+    private TableColumn<e_book, Rating> colStar;
 
     /**
      * Initializes the controller class.
@@ -163,13 +170,21 @@ public class e_bookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        e_bookCRUD book = new e_bookCRUD();
+        pie.setData(book.getDataStat());
+
+        pie.setTitle("Nombre de vues");
         btnmodifier.setDisable(true);
         btnsupprimer.setDisable(true);
         tableView.setEditable(true);
-        e_bookCRUD book = new e_bookCRUD();
+
         oc = book.afficherBook();
         colid.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("id"));
-
+//        
+//       Rating rating = new Rating(5);
+// colStar.averagingInt(Double.parseDouble(new PropertyValueFactory<e_book, Integer>("evaluation")+""));
+//        colStar.setCellFactory( (Double.parseDouble(new PropertyValueFactory<e_book, Integer>("evaluation")));
+        
         colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
         colauteur.setCellFactory(TextFieldTableCell.forTableColumn());
         colauteur.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
@@ -387,10 +402,10 @@ public class e_bookController implements Initializable {
             tfauteur.setText(colauteur.getCellData(Aem).toString());
             tfgenre.setText(colgenre.getCellData(Aem).toString());
             if (event.getButton() == MouseButton.SECONDARY) {
-                 e_bookCRUD P = new e_bookCRUD();
-                    e_book a = new e_book( Integer.parseInt(colid.getCellData(Aem).toString()),colauteur.getCellData(Aem).toString(), coltitre.getCellData(Aem).toString(), colgenre.getCellData(Aem).toString(), Integer.parseInt(colevaluation.getCellData(Aem).toString()), Integer.parseInt(colcitation.getCellData(Aem).toString()), Integer.parseInt(col_nb_fav.getCellData(Aem).toString()), colimage.getCellData(Aem).toString());
-                    P.nombreVue(a);
-                    
+                e_bookCRUD P = new e_bookCRUD();
+                e_book a = new e_book(Integer.parseInt(colid.getCellData(Aem).toString()), colauteur.getCellData(Aem).toString(), coltitre.getCellData(Aem).toString(), colgenre.getCellData(Aem).toString(), Integer.parseInt(colevaluation.getCellData(Aem).toString()), Integer.parseInt(colcitation.getCellData(Aem).toString()), Integer.parseInt(col_nb_fav.getCellData(Aem).toString()), colimage.getCellData(Aem).toString());
+                P.nombreVue(a);
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
                 try {
                     Parent root = loader.load();
@@ -399,9 +414,8 @@ public class e_bookController implements Initializable {
                     dwc.setLabauteur(colauteur.getCellData(Aem).toString());
                     dwc.setLabgenre(colgenre.getCellData(Aem).toString());
                     dwc.setImage(colimage.getCellData(Aem).toString());
+                    dwc.setStar(Double.parseDouble(colevaluation.getCellData(Aem).toString()));
                     dwc.setlabcitation(Integer.parseUnsignedInt(colcitation.getCellData(Aem).toString()));
-                    
-                   
 
                     tfauteur.getScene().setRoot(root);
 
@@ -620,13 +634,13 @@ public class e_bookController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Vous voulez ouvrir le fichier ?!");
+        alert.setContentText("Vous voulez ouvrir le fichier PDF ?!");
         Optional<ButtonType> action = alert.showAndWait();
         if (action.get() == ButtonType.OK) {
-                   Desktop.getDesktop().open(new File("C:\\Users\\Kenza\\Desktop\\cours\\semestre2\\PIdEV\\Meliora-java\\meliora\\meliora\\e_book.pdf"));
+            Desktop.getDesktop().open(new File("C:\\Users\\Kenza\\Desktop\\cours\\semestre2\\PIdEV\\Meliora-java\\meliora\\meliora\\e_book.pdf"));
 
         }
     }
@@ -643,6 +657,15 @@ public class e_bookController implements Initializable {
             Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Vous voulez ouvrir le fichier EXCEL ?!");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK) {
+            Desktop.getDesktop().open(new File("C:\\Users\\Kenza\\Desktop\\cours\\semestre2\\PIdEV\\Meliora-java\\meliora\\meliora\\Liste des e_books.xls"));
+
         }
     }
 }

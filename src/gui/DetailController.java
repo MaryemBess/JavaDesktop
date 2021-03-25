@@ -26,16 +26,14 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
+
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -49,6 +47,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.MediaPlayerBuilder;
 import javafx.scene.media.MediaView;
+import org.controlsfx.control.Rating;
 import utils.myconnexion;
 
 /**
@@ -70,6 +69,13 @@ public class DetailController implements Initializable {
     private Label labcitation;
     @FXML
     private Button btnback;
+    @FXML
+    private Rating star;
+    @FXML
+    private AnchorPane AnchorPane;
+    @FXML
+    private TextField labid;
+   
 
     /**
      * Initializes the controller class.
@@ -77,6 +83,10 @@ public class DetailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+
+   public void setStar(int x) {
+//        this.titre.setText(x).toS;
     }
 
     public void setTitre(String titre) {
@@ -87,6 +97,13 @@ public class DetailController implements Initializable {
         this.labauteur.setText(labauteur);
 
     }
+
+    public void setStar(double x) {
+        this.star.setPartialRating(true);
+        this.star.setRating(x);
+//        
+       }
+    
 
     public void setLabgenre(String labgenre) {
         this.labgenre.setText(labgenre);
@@ -121,6 +138,25 @@ public class DetailController implements Initializable {
 
     @FXML
     private void backmain(ActionEvent event) {
+        System.out.println(this.star.getRating());
+         if (this.star.getRating()!= -1)
+    {
+        Connection cx = myconnexion.getInstance().getCnx();
+        String valeurid = this.labid.getText();
+            double nouvelvaleur=this.star.getRating();
+        try {
+            
+            String req = "update e_books set evaluation=? where id=?";
+            PreparedStatement pst = cx.prepareStatement(req);
+            pst.setInt(1, Integer.getInteger(""+nouvelvaleur));
+            pst.setInt(2, Integer.parseInt(valeurid));
+            pst.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println("ERREUR UPDATE EVALUATION");
+            System.out.println(ex.getMessage());
+        }
+        
+    }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("e_book.fxml"));
 
         try {
