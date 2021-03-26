@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6 mars 2021, 20:15:27
+    Author     : SAFA
+*/
+.bottom-bar-color{
+    -fx-background-color :linear-gradient(from 25% 25% to 100% 100%,#0B1E3E ,#4E154C);
+}
+
+.body-background{
+     -fx-background-color :linear-gradient(from 25% 25% to 100% 100%,#4E154C ,#085a89);
+}
+.TRANSPARENT{
+    -fx-background-color:rgba(0,0,0,0);
+}
+.search-background{
+    -fx-background-color:#787A8F;
+    -fx-background-radiud:50;
+}
+.Menu-bar-background{
+    -fx-background-color:#FF5959;
+    -fx-background-radiud: 0 30 30 0;
+}

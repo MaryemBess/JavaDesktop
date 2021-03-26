@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="604.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MusicPlayListController">
+   <children>
+      <HBox layoutY="533.0" prefHeight="73.0" prefWidth="759.0" styleClass="bottom-bar-color" stylesheets="@../Style/Style.css" />
+      <BorderPane prefHeight="532.0" prefWidth="759.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <Pane prefHeight="554.0" prefWidth="759.0" styleClass="body-background" stylesheets="@../Style/Style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutX="4.0" prefHeight="108.0" prefWidth="759.0">
+                     <children>
+                        <HBox layoutX="288.0" layoutY="35.0" prefHeight="20.0" prefWidth="222.0" style="-fx-background-radius: 50;" styleClass="search-background" stylesheets="@../Style/Style.css">
+                           <children>
+                              <ImageView fitHeight="26.0" fitWidth="32.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="25.0" fitWidth="31.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../AppData/Local/Temp/icons8_search_32px_1.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField promptText="Search for Song" styleClass="TRANSPARENT" stylesheets="@../Style/Style.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="4.0" layoutY="106.0" prefHeight="352.0" prefWidth="128.0">
+                     <children>
+                        <VBox layoutX="-4.0" layoutY="40.0" prefHeight="241.0" prefWidth="65.0" style="-fx-background-radius: 0px 30px 30px 0px;" styleClass="Menu-bar-background" stylesheets="@../Style/Style.css">
+                           <children>
+                              <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/home_24px.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="40.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="39.0" fitWidth="36.0" layoutX="20.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/music_24px.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="20.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="39.0" fitWidth="36.0" layoutX="20.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/playlist_24px.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="20.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="Startbtn" fitHeight="50.0" fitWidth="50.0" layoutX="305.0" layoutY="433.0" onMousePressed="#start_pause" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="next" fitHeight="50.0" fitWidth="50.0" layoutX="375.0" layoutY="433.0" onMousePressed="#nextSong" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/fast_forward_48px.png" />
+                     </image></ImageView>
+                  <ListView fx:id="MusicListview" layoutX="455.0" layoutY="96.0" prefHeight="300.0" prefWidth="210.0" style="-fx-background-color: transpatrent; -fx-border-color: #9e4be7; -fx-border-radius: 10;" />
+                  <ImageView fx:id="speaker" fitHeight="50.0" fitWidth="50.0" layoutX="445.0" layoutY="433.0" onMousePressed="#mute" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="previous" fitHeight="50.0" fitWidth="50.0" layoutX="235.0" layoutY="433.0" onMousePressed="#previousSong" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/rewind_48px.png" />
+                     </image>
+                  </ImageView>
+                  <Slider fx:id="VolumeSlider" layoutX="515.0" layoutY="451.0" />
+                  <Label fx:id="MusicName" layoutX="270.0" layoutY="406.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane layoutX="455.0" layoutY="96.0" prefHeight="298.0" prefWidth="205.0" style="-fx-background: transparent; -fx-background-color: transparent;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                           <children>
+                              <GridPane fx:id="gridpane" prefHeight="0.0" prefWidth="51.0">
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <ImageView fx:id="AlbumImg" fitHeight="290.0" fitWidth="290.0" layoutX="155.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </Pane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

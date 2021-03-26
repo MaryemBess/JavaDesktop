@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MusicFXMLController">
+   <children>
+      <TabPane layoutX="12.0" layoutY="15.0" prefHeight="532.0" prefWidth="743.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="PlayListe">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="505.0" fitWidth="743.0" layoutY="-2.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@../images/meditation-pleine-conscience-concentration-1-e1522832932941.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox layoutX="27.0" layoutY="94.0" prefHeight="211.0" prefWidth="258.0">
+                           <children>
+                              <HBox prefHeight="46.0" prefWidth="266.0">
+                                 <children>
+                                    <Label alignment="TOP_CENTER" text="Music Player">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="btnbrowse" mnemonicParsing="false" onAction="#BrowseMusic" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="Browse" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets left="20.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <Pane prefHeight="5.0" prefWidth="266.0" style="-fx-background-color: black;" />
+                              <HBox prefHeight="52.0" prefWidth="266.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <TextField fx:id="tftitre" alignment="TOP_LEFT" prefHeight="51.0" prefWidth="264.0" promptText="Title" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="52.0" prefWidth="266.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <TextField fx:id="tfgenre" prefHeight="49.0" prefWidth="266.0" promptText="Genre" style="-fx-background-color: transaprent;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="52.0" prefWidth="266.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <TextField fx:id="tfartiste" prefHeight="49.0" prefWidth="267.0" promptText="Artist" style="-fx-background-color: transaparent;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tabM" layoutX="325.0" layoutY="126.0" onMouseClicked="#selectedM" opacity="0.46" prefHeight="252.0" prefWidth="409.0" style="-fx-background-color: transparent;">
+                          <columns>
+                            <TableColumn fx:id="coltitre" prefWidth="95.0" text="Title" />
+                              <TableColumn fx:id="colgenre" prefWidth="114.0" text="Genre" />
+                              <TableColumn fx:id="colartiste" prefWidth="104.0" text="Artist" />
+                              <TableColumn fx:id="play" prefWidth="95.0" text="Play this shit" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnmodifier" layoutX="392.0" layoutY="385.0" mnemonicParsing="false" onAction="#modifier_music" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="EDIT" textFill="#f2eded" />
+                        <Button fx:id="Supprimer" layoutX="545.0" layoutY="385.0" mnemonicParsing="false" onAction="#supprimer_music" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="Remove      " textFill="#fcf8f8" />
+                        <HBox layoutX="529.0" layoutY="57.0" prefHeight="27.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="27.0" fitWidth="24.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/search_30px.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="tfrech" onKeyReleased="#search_Music" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 100;" />
+                           </children>
+                        </HBox>
+                        <Button fx:id="Ajouter" layoutX="50.0" layoutY="328.0" mnemonicParsing="false" onAction="#AjouterMusic" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="Add Music     " textFill="#eee9e9" />
+                        <Button fx:id="btnplay" layoutX="482.0" layoutY="441.0" mnemonicParsing="false" onAction="#PlayMusic" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="Play     " textFill="#f2eded" />
+                        <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="563.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/play_50px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="146.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/add_new_16px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="482.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/edit_node_50px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="634.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/delete_26px.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="music" layoutX="346.0" layoutY="45.0" mnemonicParsing="false" onAction="#GoToMusic" text="8né" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Videos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="504.0" fitWidth="734.0" layoutX="-6.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="521.0" fitWidth="743.0" layoutY="-13.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/meditation-pleine-conscience-concentration-1-e1522832932941.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox layoutX="29.0" layoutY="54.0" prefHeight="284.0" prefWidth="225.0">
+                           <children>
+                              <Label prefHeight="57.0" prefWidth="225.0" text="Video Player">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnbrowseV" mnemonicParsing="false" onAction="#BrowseVideo" text="Browse" />
+                              <Pane prefHeight="5.0" prefWidth="225.0" style="-fx-background-color: black;" />
+                              <HBox prefHeight="54.0" prefWidth="225.0">
+                                 <children>
+                                    <TextField fx:id="tftitreV" prefHeight="51.0" prefWidth="264.0" promptText="Title" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="72.0" prefHeight="56.0" prefWidth="225.0">
+                                 <children>
+                                    <TextField fx:id="tfgenreV" prefHeight="51.0" prefWidth="264.0" promptText="Genre" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="222.0" prefHeight="53.0" prefWidth="225.0">
+                                 <children>
+                                    <TextField fx:id="tfNbl" prefHeight="51.0" prefWidth="264.0" promptText="Nb_likes" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <TextField fx:id="tfNbd" prefHeight="51.0" prefWidth="264.0" promptText="Nb_dislikes" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tabV" layoutX="274.0" layoutY="112.0" onMouseClicked="#selectedV" opacity="0.46" prefHeight="245.0" prefWidth="459.0" style="-fx-background-color: transaprent;">
+                          <columns>
+                            <TableColumn fx:id="coltitrev" prefWidth="82.0" style="-fx-background-color: transaprent;" text="Title" />
+                            <TableColumn fx:id="colgenrev" prefWidth="89.0" style="-fx-background-color: transparent;" text="Genre" />
+                              <TableColumn fx:id="nbl" prefWidth="94.0" style="-fx-background-color: transparent;" text="Nb_likes" />
+                              <TableColumn fx:id="nbd" prefWidth="97.0" style="-fx-background-color: transparent;" text="Nb_dislikes" />
+                              <TableColumn fx:id="playv" prefWidth="120.0" text="Play" />
+                          </columns>
+                        </TableView>
+                        <HBox layoutX="528.0" layoutY="42.0" prefHeight="33.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="27.0" fitWidth="47.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/search_30px.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="tfrechV" onKeyReleased="#search_Video" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 100;" />
+                           </children>
+                        </HBox>
+                        <Button fx:id="ajouterV" layoutX="69.0" layoutY="357.0" mnemonicParsing="false" onAction="#AjouterVideo" prefHeight="37.0" prefWidth="146.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="Video Add   " textFill="#eee9e9">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ModifierV" layoutX="376.0" layoutY="387.0" mnemonicParsing="false" onAction="#Modifiervideo" prefHeight="37.0" prefWidth="146.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="Edit" textFill="#eee9e9">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="supprimerV" layoutX="556.0" layoutY="387.0" mnemonicParsing="false" onAction="#supprimervideo" prefHeight="37.0" prefWidth="146.0" style="-fx-background-color: black; -fx-background-radius: 100;" text="Remove" textFill="#eee9e9">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="467.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/edit_node_50px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="667.0" layoutY="395.0">
+                           <image>
+                              <Image url="@../images/delete_26px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="21.0" layoutX="174.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/add_new_16px.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnplayv" layoutX="511.0" layoutY="442.0" mnemonicParsing="false" onAction="#PlayVideo" prefHeight="25.0" prefWidth="108.0" text="Play" />
+                        <MediaView fx:id="medview" fitHeight="200.0" fitWidth="200.0" layoutX="292.0" layoutY="-13.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
