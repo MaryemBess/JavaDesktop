@@ -87,7 +87,10 @@ import service.excel;
 import service.sendMail;
 import utils.myconnexion;
 import javafx.scene.chart.PieChart;
+import javafx.util.Duration;
 import org.controlsfx.control.Rating;
+import service.QRcode;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -184,7 +187,7 @@ public class e_bookController implements Initializable {
 //       Rating rating = new Rating(5);
 // colStar.averagingInt(Double.parseDouble(new PropertyValueFactory<e_book, Integer>("evaluation")+""));
 //        colStar.setCellFactory( (Double.parseDouble(new PropertyValueFactory<e_book, Integer>("evaluation")));
-        
+
         colauteur.setCellValueFactory(new PropertyValueFactory<e_book, String>("auteur"));
         colauteur.setCellFactory(TextFieldTableCell.forTableColumn());
         colauteur.setOnEditCommit(new EventHandler<CellEditEvent<e_book, String>>() {
@@ -298,6 +301,12 @@ public class e_bookController implements Initializable {
 
             P.ajouterBook(a);
             JOptionPane.showMessageDialog(null, "ADD DONE");
+            JOptionPane.showMessageDialog(null, "Mail en cours d'envoi");
+             TrayNotification tray = new TrayNotification();
+        tray.setTitle("E_book ajoutée");
+        tray.setMessage("Un livre a été ajouté");
+        tray.showAndDismiss (Duration.millis (5200));
+
             String msg = "Bonjour Mme/Mr ,"
                     + " C'est un plaisir de vous informez que le livre " + tftitre.getText() + " de " + tfauteur.getText() + "est sur la platorme"
                     + " Classifiez comme de type " + tfgenre.getText()
@@ -307,14 +316,19 @@ public class e_bookController implements Initializable {
             sendMail sm = new sendMail();
             try {
                 sm.sendMail("kenza.ghenimi@gmail.com", "Ajout d'un nouveau livre", msg);
+                
             } catch (MessagingException ex) {
                 Logger.getLogger(e_bookController.class.getName()).log(Level.SEVERE, null, ex);
             }
+            QRcode qrc = new QRcode();
+                qrc.QRcode();
+               
 //        }
         }
 //        tflabauteur.setText("");
 //            tflabtitre.setText("");
 //            tflabgenre.setText("");
+
         e_bookCRUD cs = new e_bookCRUD();
         oc = cs.afficherBook();
         colid.setCellValueFactory(new PropertyValueFactory<e_book, Integer>("id"));
@@ -416,6 +430,8 @@ public class e_bookController implements Initializable {
                     dwc.setImage(colimage.getCellData(Aem).toString());
                     dwc.setStar(Double.parseDouble(colevaluation.getCellData(Aem).toString()));
                     dwc.setlabcitation(Integer.parseUnsignedInt(colcitation.getCellData(Aem).toString()));
+                    dwc.setId(Integer.parseInt(colid.getCellData(Aem).toString()));
+                    dwc.setQR(Integer.parseInt(colid.getCellData(Aem).toString()));
 
                     tfauteur.getScene().setRoot(root);
 

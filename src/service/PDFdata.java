@@ -32,7 +32,7 @@ public class PDFdata {
         Document document = new Document();
         e_bookCRUD rm = new e_bookCRUD();
         List<e_book> res = rm.gete_bookListBack();
-        PdfWriter.getInstance(document, new FileOutputStream(new File("e_book.pdf")));
+        PdfWriter.getInstance(document, new FileOutputStream(new File("C:\\Users\\Kenza\\Desktop\\cours\\semestre2\\PIdEV\\Meliora-java\\meliora\\Document\\e_bookPDF.pdf")));
         document.open();
         PDFdata pdf = new PDFdata();
         for (e_book r : res) {

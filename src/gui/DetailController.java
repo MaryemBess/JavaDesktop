@@ -72,9 +72,9 @@ public class DetailController implements Initializable {
     @FXML
     private Rating star;
     @FXML
-    private AnchorPane AnchorPane;
+    private Label labid;
     @FXML
-    private TextField labid;
+    private ImageView QR;
    
 
     /**
@@ -86,7 +86,10 @@ public class DetailController implements Initializable {
     }
 
    public void setStar(int x) {
-//        this.titre.setText(x).toS;
+//        this.labid.setText(x);
+    }
+    public void setId(int x) {
+        this.labid.setText(x+"");
     }
 
     public void setTitre(String titre) {
@@ -135,10 +138,17 @@ public class DetailController implements Initializable {
         this.image.setImage(i);
 
     }
+    public void setQR(int x) {
+        File imageFile = new File("C:\\Users\\Kenza\\Desktop\\cours\\semestre2\\PIdEV\\Meliora-java\\meliora\\Document\\Ebook_n°"+x+".png");
+        Image i = new Image(imageFile.toURI().toString());
+        this.QR.setImage(i);
+
+    }
 
     @FXML
     private void backmain(ActionEvent event) {
-        System.out.println(this.star.getRating());
+//        System.out.println((int)this.star.getRating());
+//        System.out.println(this.labid.getText());
          if (this.star.getRating()!= -1)
     {
         Connection cx = myconnexion.getInstance().getCnx();
@@ -146,10 +156,11 @@ public class DetailController implements Initializable {
             double nouvelvaleur=this.star.getRating();
         try {
             
-            String req = "update e_books set evaluation=? where id=?";
+            String req = "update e_books set evaluation=round((evaluation+"+nouvelvaleur+
+                    ")/2 ,2) where id = ?";
             PreparedStatement pst = cx.prepareStatement(req);
-            pst.setInt(1, Integer.getInteger(""+nouvelvaleur));
-            pst.setInt(2, Integer.parseInt(valeurid));
+//            pst.setInt(1, Integer.getInteger(""+(int)nouvelvaleur));
+            pst.setInt(1, Integer.parseInt(valeurid));
             pst.executeUpdate();
         } catch (Exception ex) {
             System.out.println("ERREUR UPDATE EVALUATION");

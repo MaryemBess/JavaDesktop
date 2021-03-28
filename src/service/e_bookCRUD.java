@@ -186,7 +186,7 @@ public class e_bookCRUD {
             st = cx.createStatement();
             ResultSet rs = st.executeQuery(req);
            while(rs.next()){
-               data.add(new PieChart.Data (rs.getString("evaluation"),rs.getInt("favoris")));
+               data.add(new PieChart.Data (rs.getString("evaluation")+"/5",rs.getInt("favoris")));
            }
         } catch (SQLException ex) {
            System.out.println("Probléme");
