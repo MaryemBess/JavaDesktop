@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="View_MeditationMaryem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterAlimentController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <left>
+            <VBox prefHeight="388.0" prefWidth="282.0" style="-fx-background-color: Linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a); -fx-border-color: white; -fx-border-width: 4;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnhome" mnemonicParsing="false" onAction="#redirHome" prefHeight="210.0" prefWidth="282.0" style="-fx-background-color: Linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a); -fx-border-color: white; -fx-text-fill: white; -fx-font-size: 22;" stylesheets="@Style%20Dark.css" text="Accueil" />
+                  <Button fx:id="btnListerAliment" mnemonicParsing="false" onAction="#redirListerAliment" prefHeight="210.0" prefWidth="282.0" style="-fx-background-color: Linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a); -fx-border-color: white; -fx-border-width: 2; -fx-font-size: 22; -fx-text-fill: white;" stylesheets="@Style%20Dark.css" text="Consulter Les Aliments" />
+                  <Button fx:id="btnListerRegime" mnemonicParsing="false" onAction="#redirListerRegime" prefHeight="210.0" prefWidth="282.0" style="-fx-background-color: Linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a); -fx-border-color: white; -fx-border-width: 2; -fx-font-size: 22; -fx-text-fill: white;" stylesheets="@Style%20Dark.css" text="Consulter Les Regimes" />
+                  <Button mnemonicParsing="false" prefHeight="210.0" prefWidth="282.0" style="-fx-background-color: Linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a); -fx-border-color: white; -fx-text-fill: white; -fx-font-size: 22; -fx-border-width: 2;" stylesheets="@Style%20Dark.css" text="Statistique" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="845.0" prefWidth="1000.0" style="-fx-background-color: Linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a);" stylesheets="@Style%20Dark.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnCancel" layoutX="781.0" layoutY="248.0" mnemonicParsing="false" onAction="#annuler" prefHeight="69.0" prefWidth="194.0" style="-fx-background-color: white; -fx-font-size: 22; -fx-text-fill: black;" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Annuler" />
+                  <Button fx:id="btn_ajouterAliment" layoutX="780.0" layoutY="157.0" mnemonicParsing="false" onAction="#AjouterAliment" prefHeight="69.0" prefWidth="194.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 22;" stylesheets="@Style%20Dark.css" text="Ajouter" />
+                  <TextField fx:id="tf_libelle" layoutX="236.0" layoutY="147.0" prefHeight="32.0" prefWidth="393.0" style="-fx-text-fill: black; -fx-font-weight: bold;" stylesheets="@Style%20Dark.css" />
+                  <TextArea fx:id="tf_recette" layoutX="226.0" layoutY="216.0" prefHeight="100.0" prefWidth="394.0" style="-fx-font-weight: bold;" stylesheets="@Style%20Dark.css" />
+                  <TextField fx:id="tf_gras" layoutX="233.0" layoutY="440.0" prefHeight="32.0" prefWidth="393.0" style="-fx-text-fill: black; -fx-font-weight: bold;" stylesheets="@Style%20Dark.css" />
+                  <TextField fx:id="tf_carbs" layoutX="237.0" layoutY="515.0" prefHeight="32.0" prefWidth="393.0" style="-fx-text-fill: black; -fx-font-weight: bold;" stylesheets="@Style%20Dark.css" />
+                  <TextField fx:id="tf_calories" layoutX="227.0" layoutY="359.0" prefHeight="32.0" prefWidth="393.0" style="-fx-text-fill: black; -fx-font-weight: bold;" stylesheets="@Style%20Dark.css" />
+                  <Label layoutX="96.0" layoutY="149.0" prefHeight="6.0" prefWidth="97.0" style="-fx-text-fill: white; -fx-font-size: 22;" stylesheets="@Style%20Dark.css" text="Libellé" />
+                  <Label layoutX="88.0" layoutY="240.0" prefHeight="55.0" prefWidth="119.0" style="-fx-text-fill: white; -fx-font-size: 22;" stylesheets="@Style%20Dark.css" text="recette" />
+                  <Label layoutX="94.0" layoutY="353.0" prefHeight="55.0" prefWidth="119.0" style="-fx-text-fill: white; -fx-font-size: 22;" stylesheets="@Style%20Dark.css" text="calories" />
+                  <Label layoutX="99.0" layoutY="429.0" prefHeight="55.0" prefWidth="119.0" style="-fx-text-fill: white; -fx-font-size: 22;" stylesheets="@Style%20Dark.css" text="gras" />
+                  <Label layoutX="97.0" layoutY="506.0" prefHeight="55.0" prefWidth="119.0" style="-fx-text-fill: white; -fx-font-size: 22;" stylesheets="@Style%20Dark.css" text="Carbs" />
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1400.0" style="-fx-background-color: WHITE;" BorderPane.alignment="TOP_LEFT" />
+         </top>
+      </BorderPane>
+   </children>
+</VBox>

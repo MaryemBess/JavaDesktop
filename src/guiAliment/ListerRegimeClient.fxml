@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="View_MeditationMaryem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1400.0" stylesheets="@Style%20Dark.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListerRegimeClientController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <left>
+            <VBox prefHeight="997.0" prefWidth="282.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnhome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redirHome" prefHeight="210.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Accueil" />
+                  <Button fx:id="btnListerAliment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redirListerAliment" prefHeight="210.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Consulter Les Aliments" />
+                  <Button fx:id="btnListerRegime" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redirListerRegime" prefHeight="210.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Consulter Les Regimes" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="210.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Statistique" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1206.0" style="-fx-background-image: #00ffff;" stylesheets="@Style%20Dark.css" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="tableregime" layoutX="61.0" layoutY="265.0" prefHeight="421.0" prefWidth="946.0">
+                     <columns>
+                        <TableColumn fx:id="ID" prefWidth="29.5999755859375" text="ID" />
+                        <TableColumn fx:id="DESCRIPTION" prefWidth="728.0000228881836" text="Description" />
+                        <TableColumn fx:id="DURATION" prefWidth="187.2000732421875" text="durée" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btnModifier" layoutX="436.0" layoutY="138.0" mnemonicParsing="false" onAction="#ModifierRegime" prefHeight="67.0" prefWidth="186.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Modifier" />
+                  <Button fx:id="supppreg" layoutX="706.0" layoutY="134.0" mnemonicParsing="false" onAction="#supprimerRegime" prefHeight="69.0" prefWidth="178.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Supprimer" />
+                  <Button fx:id="btnAjouterRegime" layoutX="145.0" layoutY="140.0" mnemonicParsing="false" onAction="#AjouterRegime" prefHeight="67.0" prefWidth="186.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Ajouter Regime" />
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="1400.0" style="-fx-background-color: white;" BorderPane.alignment="TOP_LEFT" />
+         </top>
+      </BorderPane>
+   </children>
+</VBox>

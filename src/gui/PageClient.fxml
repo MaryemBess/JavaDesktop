@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="scenePane" prefHeight="704.0" prefWidth="1277.0" style="-fx-background-color: linear-gradient(to bottom, #055878 0%, #378184 60%);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PageClientController">
+   <children>
+      <HBox layoutX="437.0" layoutY="73.0" prefHeight="75.0" prefWidth="686.0">
+         <children>
+            <HBox onMouseClicked="#ProduitClient" prefHeight="12.0" prefWidth="149.0" />
+            <HBox prefHeight="75.0" prefWidth="157.0">
+               <children>
+                  <VBox prefHeight="75.0" prefWidth="159.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="75.0" prefWidth="204.0" />
+            <HBox prefHeight="75.0" prefWidth="91.0" />
+         </children>
+      </HBox>
+      <VBox fx:id="content_area" layoutX="197.0" layoutY="158.0" prefHeight="564.0" prefWidth="1055.0">
+         <children>
+            <BorderPane fx:id="contents" prefHeight="560.0" prefWidth="1028.0">
+               <bottom>
+               </bottom></BorderPane>
+         </children>
+      </VBox>
+      <HBox prefHeight="75.0" prefWidth="204.0">
+               <children>
+                  <JFXComboBox fx:id="combo" onAction="#combo" opacity="0.98" prefHeight="31.0" prefWidth="231.0" promptText="Reclamations" style="-fx-background-color: #ffffff;" />
+               </children>
+            </HBox>
+      <JFXButton fx:id="logoutbutton" buttonType="RAISED" layoutX="1102.0" layoutY="16.0" onAction="#logout" prefHeight="43.0" prefWidth="142.0" ripplerFill="#7c0101" style="-fx-background-color: #E74A3B; -fx-background-radius: 45;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </JFXButton>
+   </children>
+</AnchorPane>

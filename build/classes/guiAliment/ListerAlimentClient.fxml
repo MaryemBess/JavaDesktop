@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" style="-fx-background-color: linear-gradient(to bottom, #055878 0%, #378184 60%);" stylesheets="@Style%20Dark.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListerAlimentClientController">
+   <center>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="1400.0" style="-fx-background-image: #00ffff;" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="TABLEALIMENT" layoutX="80.0" layoutY="257.0" prefHeight="461.0" prefWidth="978.0" style="-fx-background-color: #ebedf0; -fx-border-color: white; -fx-border-width: 4;">
+              <columns>
+                <TableColumn fx:id="LIBELLE" prefWidth="276.79998779296875" text="Libelle" />
+                <TableColumn fx:id="RECETTE" prefWidth="471.9999694824219" text="Recette" />
+                  <TableColumn fx:id="COLORIES" prefWidth="77.60009765625" text="Calories" />
+                  <TableColumn fx:id="GRAS" prefWidth="64.0" text="Gras" />
+                  <TableColumn fx:id="CARBS" prefWidth="88.800048828125" text="Carbs" />
+              </columns>
+            </TableView>
+            <Button layoutX="244.0" layoutY="128.0" mnemonicParsing="false" onAction="#AjouterAliment" prefHeight="72.0" prefWidth="250.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Ajouter Aliment" />
+            <Button layoutX="593.0" layoutY="123.0" mnemonicParsing="false" onAction="#Details" prefHeight="76.0" prefWidth="246.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Plus de details" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <VBox prefHeight="900.0" prefWidth="266.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnhome" mnemonicParsing="false" onAction="#redirHome" prefHeight="310.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Accueil" />
+            <Button fx:id="btnListerAliment" mnemonicParsing="false" onAction="#redirListerAliment" prefHeight="310.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Consulter Les Aliments" />
+            <Button fx:id="btnListerRegime" mnemonicParsing="false" onAction="#redirListerRegime" prefHeight="310.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Consulter Les Regimes" />
+            <Button mnemonicParsing="false" prefHeight="310.0" prefWidth="346.0" styleClass="blog-btn" stylesheets="@Style%20Dark.css" text="Statistique" />
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <Pane prefHeight="46.0" prefWidth="1400.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

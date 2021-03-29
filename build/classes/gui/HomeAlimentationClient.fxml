@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="View_MeditationMaryem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="686.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeAlimentationClientController">
+   <children>
+      <AnchorPane fx:id="anchorpane" prefHeight="701.0" prefWidth="932.0" style="-fx-background-image: #000000;">
+         <children>
+            <Button fx:id="btnAliment" layoutY="200.0" mnemonicParsing="false" onAction="#ListerAliment" prefHeight="58.0" prefWidth="932.0" text="Consulter les Aliments proposé par nos experts " />
+            <Button fx:id="btnRegime" layoutY="434.0" mnemonicParsing="false" onAction="#ListerRegime" prefHeight="58.0" prefWidth="932.0" text="Venir decouvrir nos Regime" />
+            <ImageView fx:id="imageAliment" fitHeight="150.0" fitWidth="932.0" layoutY="50.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../téléchargement.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageRegime" disable="true" fitHeight="150.0" fitWidth="932.0" layoutY="284.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../téléchargement.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
