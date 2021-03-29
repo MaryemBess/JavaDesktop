@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlanningconsController">
+   <children>
+      <AnchorPane prefHeight="650.0" prefWidth="916.0" style="-fx-background-color: linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a);;" stylesheets="@style2.css">
+         <children>
+            <Line endX="791.6000366210938" endY="-8.199993133544922" layoutX="137.0" layoutY="45.0" startX="-130.0" startY="-8.199996948242188" />
+            <Label layoutX="10.0" layoutY="-6.0" text="Vos planning" textFill="#b51818">
+               <font>
+                  <Font name="System Italic" size="27.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tvplanning" fixedCellSize="0.0" layoutX="123.0" layoutY="45.0" onMouseClicked="#getselected_t3" prefHeight="210.0" prefWidth="642.0" stylesheets="@Tableau.css">
+               <columns>
+                  <TableColumn fx:id="tvnum_p" prefWidth="117.60003662109375" text="Numéro planning" />
+                  <TableColumn fx:id="tvnom_p" prefWidth="169.5999755859375" text="Nom du planning" />
+                  <TableColumn fx:id="tv_datea" prefWidth="168.800048828125" text="tvdatea" />
+                  <TableColumn fx:id="tv_nbr" prefWidth="184.7999267578125" text="Nombres de taches" />
+               </columns>
+            </TableView>
+            <Button fx:id="btndetails" disable="true" layoutX="248.0" layoutY="278.0" mnemonicParsing="false" onAction="#RedirectDetails" prefHeight="34.0" prefWidth="113.0" text="Voir details" />
+            <Button fx:id="btnDelete" disable="true" layoutX="392.0" layoutY="278.0" mnemonicParsing="false" onAction="#supprimerp" prefHeight="34.0" prefWidth="127.0" text="Delete" />
+            <Button fx:id="btna" layoutX="637.0" layoutY="1.0" mnemonicParsing="false" onAction="#redirect" prefHeight="26.0" prefWidth="234.0" text="Creer votre propre planning" />
+            <Line endX="815.3999633789062" layoutX="110.0" layoutY="338.0" startX="-100.0" />
+            <Label layoutX="14.0" layoutY="295.0" text="Parcourir planning" textFill="#a21212">
+               <font>
+                  <Font name="System Italic" size="29.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tvplanningcreer" layoutX="26.0" layoutY="353.0" onMouseClicked="#getselected" prefHeight="267.0" prefWidth="883.0" stylesheets="@Tableau.css">
+               <columns>
+                  <TableColumn fx:id="tvid_p" prefWidth="121.60000324249268" style="-fx-alignement: center;" text="Identifiant planning" />
+                  <TableColumn fx:id="tv_desc" prefWidth="231.19996643066406" text="Description" />
+                  <TableColumn fx:id="tvlike" prefWidth="98.4000244140625" text="Nombre de like" />
+                  <TableColumn fx:id="tvdislike" prefWidth="140.0" text="Nombre de dislike" />
+                  <TableColumn fx:id="tv_crea" prefWidth="289.5999755859375" text="Nom du createur" />
+               </columns>
+            </TableView>
+            <Button fx:id="btn_addp" disable="true" layoutX="37.0" layoutY="636.0" mnemonicParsing="false" onAction="#Add_monplanning" prefHeight="26.0" prefWidth="422.0" text="AJOUTER CE PLANNING A MON PROGRAME" textFill="#da1414">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="tv_addn" layoutX="735.0" layoutY="636.0" />
+            <Label layoutX="514.0" layoutY="640.0" text="Affecter un nom a ce planning" />
+            <Button fx:id="btn_mod" disable="true" layoutX="547.0" layoutY="278.0" mnemonicParsing="false" onAction="#redirectMod" prefHeight="33.0" prefWidth="169.0" text="Modifier" />
+            <ImageView fitHeight="23.0" fitWidth="31.0" layoutX="480.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/images/delete_1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="31.0" layoutX="872.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="849.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/images/add.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="381.0" layoutY="637.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/images/add_1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="675.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/images/modify.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="916.0" style="-fx-background-color: linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a);;" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierplanningController">
+   <children>
+      <TableView fx:id="tvtache" layoutX="8.0" layoutY="134.0" onMouseClicked="#getselected_t" prefHeight="340.0" prefWidth="411.0">
+         <columns>
+            <TableColumn fx:id="tv_idt" prefWidth="111.99997520446777" text="Numero du tache" />
+            <TableColumn fx:id="tv_nom" prefWidth="104.79998779296875" text="Nom du tache" />
+            <TableColumn fx:id="tv_t" minWidth="0.0" prefWidth="80.79994201660156" text="Type" />
+            <TableColumn fx:id="tv_l" prefWidth="53.60003662109375" text="Like" />
+            <TableColumn fx:id="tv_d" prefWidth="58.4000244140625" text="Dislike" />
+         </columns>
+      </TableView>
+      <Button fx:id="btn_addtache" disable="true" layoutX="97.0" layoutY="487.0" mnemonicParsing="false" onAction="#add_tache" text="Ajouter a mon plannig" textFill="#e50000" />
+      <Button fx:id="btn_suptache" disable="true" layoutX="704.0" layoutY="500.0" mnemonicParsing="false" onAction="#supprimerp" prefHeight="26.0" prefWidth="124.0" text="Supprimer de mon planning" textFill="#da1515" />
+      <TableView fx:id="tv_tacheajouté" layoutX="571.0" layoutY="135.0" onMouseClicked="#getselected_t2" prefHeight="350.0" prefWidth="330.0">
+         <columns>
+            <TableColumn fx:id="nom_t" prefWidth="136.800048828125" text="Nom du tache" />
+            <TableColumn fx:id="type_t" minWidth="0.0" prefWidth="74.4000244140625" text="type " />
+            <TableColumn fx:id="date_t" prefWidth="124.800048828125" text="date" />
+         </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="14.0" text="modifier votre planning" textFill="#b51919">
+         <font>
+            <Font name="System Italic" size="27.0" />
+         </font>
+      </Label>
+      <Line endX="800.0" endY="7.62939453125E-6" layoutX="115.0" layoutY="53.0" startX="-100.0" />
+      <TextField fx:id="btn_idplanning" editable="false" layoutX="418.0" layoutY="92.0" />
+      <Label layoutX="429.0" layoutY="64.0" text="Numero du planning" textFill="#14508f">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="777.0" layoutY="92.0" mnemonicParsing="false" onAction="#complete_liste" text="Refresh list" />
+      <DatePicker fx:id="btn_date" layoutX="424.0" layoutY="188.0" prefHeight="26.0" prefWidth="135.0" />
+      <Button fx:id="btn_mail" layoutX="381.0" layoutY="604.0" mnemonicParsing="false" onAction="#send_mail" text="Enoyer mon programme vers mon mail " textFill="#c71b1b">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="time" layoutX="425.0" layoutY="223.0" prefHeight="26.0" prefWidth="135.0" />
+   </children>
+</AnchorPane>

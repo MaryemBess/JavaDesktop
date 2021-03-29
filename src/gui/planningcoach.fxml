@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="916.0" style="-fx-background-color: linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a);;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlanningcoachController">
+   <children>
+      <Line endX="791.6000366210938" endY="-8.199993133544922" layoutX="137.0" layoutY="45.0" startX="-130.0" startY="-8.199996948242188" />
+      <Label layoutX="10.0" layoutY="-6.0" text="Vos planning creés" textFill="#b51818">
+         <font>
+            <Font name="System Italic" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="btna" layoutX="637.0" layoutY="1.0" mnemonicParsing="false" onAction="#redirect" prefHeight="26.0" prefWidth="234.0" text="Creer un nouveau programme" />
+      <TableView fx:id="tvplanningcreer" layoutX="17.0" layoutY="50.0" onMouseClicked="#getselected" prefHeight="267.0" prefWidth="883.0" stylesheets="@../../../../../khaled%20pi/Meliora-java-meliora/src/gui/Tableau.css">
+         <columns>
+            <TableColumn fx:id="tvid_p" prefWidth="121.60000324249268" style="-fx-alignement: center;" text="Identifiant planning" />
+            <TableColumn fx:id="tv_desc" prefWidth="231.19996643066406" text="Description" />
+            <TableColumn fx:id="tvlike" prefWidth="98.4000244140625" text="Nombre de like" />
+            <TableColumn fx:id="tvdislike" prefWidth="140.0" text="Nombre de dislike" />
+            <TableColumn fx:id="tv_crea" prefWidth="289.5999755859375" text="Nom du createur" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="17.0" fitWidth="31.0" layoutX="872.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="849.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../khaled%20pi/Meliora-java-meliora/src/images/images/add.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="sup" disable="true" layoutX="340.0" layoutY="327.0" mnemonicParsing="false" onAction="#supprimerp" prefHeight="39.0" prefWidth="127.0" text="supprimer" />
+      <ImageView fitHeight="23.0" fitWidth="31.0" layoutX="444.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../khaled%20pi/Meliora-java-meliora/src/images/images/delete_1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="mod" disable="true" layoutX="515.0" layoutY="328.0" mnemonicParsing="false" onAction="#redirectMod" prefHeight="39.0" prefWidth="114.0" text="Modifier" />
+      <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="602.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../khaled%20pi/Meliora-java-meliora/src/images/images/modify.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="det" disable="true" layoutX="178.0" layoutY="328.0" mnemonicParsing="false" onAction="#RedirectDetails" prefHeight="39.0" prefWidth="134.0" text="Voirs details" />
+   </children>
+   <stylesheets>
+      <URL value="@../../../../../khaled%20pi/Meliora-java-meliora/src/gui/style2.css" />
+      <URL value="@style2.css" />
+   </stylesheets>
+</AnchorPane>

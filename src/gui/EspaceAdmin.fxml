@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="851.0" prefWidth="1809.0" style="-fx-background-color: linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EspaceAdminController">
+   <children>
+      <Pane prefHeight="55.0" prefWidth="1809.0" style="-fx-background-color: #E5E8E8;" AnchorPane.bottomAnchor="796.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox layoutX="1695.0" layoutY="9.0" prefHeight="29.0" prefWidth="130.0" spacing="20.0">
+               <children>
+                  <FontAwesomeIcon fill="#010359" iconName="MINUS" onMouseClicked="#windowsMin" size="2em" />
+                  <FontAwesomeIcon iconName="SQUARE" onMouseClicked="#windowMax" size="2em" />
+                  <FontAwesomeIcon fill="#ff0303" iconName="CLOSE" onMouseClicked="#Windowsclose" size="2em" />
+               </children>
+            </HBox>
+            <Label layoutX="31.0" layoutY="-2.0" text="Espace Admin">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+            <BorderPane fx:id="View_MeditationMaryem" layoutX="248.0" layoutY="46.0" prefHeight="742.0" prefWidth="1082.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="0.0" />
+
+      <VBox layoutY="55.0" prefHeight="796.0" prefWidth="312.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="55.0">
+         <children>
+            <ImageView fx:id="logoview" fitHeight="183.0" fitWidth="295.0" onMouseMoved="#rotateImage" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Artboard%202.png" />
+               </image>
+            </ImageView>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#E_book" prefHeight="62.0" prefWidth="295.0" ripplerFill="#a6dca8" text="E_book" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Citation" prefHeight="80.0" prefWidth="295.0" ripplerFill="#a6dca8" text="Citation" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Video" prefHeight="69.0" prefWidth="295.0" ripplerFill="#a6dca8" text="Video" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Music" prefHeight="101.0" prefWidth="295.0" ripplerFill="#a6dca8" text="Music" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Coach" prefHeight="78.0" prefWidth="295.0" ripplerFill="#a6dca8" text="Coach" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Reclamation" prefHeight="92.0" prefWidth="296.0" ripplerFill="#a6dca8" text="Reclamation" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Alimentation" prefHeight="74.0" prefWidth="296.0" ripplerFill="#a6dca8" text="Alimentation" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Planning" prefHeight="96.0" prefWidth="296.0" ripplerFill="#a6dca8" text="Planning" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="299.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#Statique" prefHeight="62.0" prefWidth="295.0" ripplerFill="#a6dca8" text="Statisque" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

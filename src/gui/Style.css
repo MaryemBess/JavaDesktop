@@ -1,0 +1,414 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+
+.mainFxmlClass {
+
+  
+}
+
+.tak-btn{
+    -fx-background-color :  linear-gradient(to top right, #ff7f50, #6a5acd);
+    -fx-border-color : #ffffff;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight : bold;
+}
+
+.profile-btn{
+    -fx-background-color : transparent;
+    -fx-border-color : #333333;
+}
+
+.btn-prof{
+    -fx-background-color: #333333;
+    -fx-text-fill: #ffffff;
+    
+}
+
+.btn-prof:hover{
+    -fx-background-color: #ED701B;
+    -fx-text-fill: #ffffff;
+    -fx-border-color : #ffffff;
+    -fx-border-width : 2px;
+}
+
+
+
+.profile-btn:selected{
+     -fx-background-color : transparent;
+    -fx-border-color : #333333;
+}
+
+.cover-btn{
+    -fx-background-color : transparent;
+}
+
+
+
+.step-label{
+    
+    -fx-background-radius: 50em;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px; 
+    -fx-max-width: 50px;
+    -fx-max-height: 50px;
+    -fx-background-color: #6E6E72;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 50em;
+    -fx-background-insets:0;
+    -fx-border-width: 20px;
+}
+
+
+
+.test{
+    -background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 0 3;
+    -fx-border-color: #ffffff;
+}
+
+
+.btn-signUp{
+    -fx-background-color: #333333;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-signUp:hover{
+    -fx-background-color: #ED701B;
+    -fx-text-fill: #ffffff;
+}
+
+.back-btn{
+    -fx-background-color: transparent;
+}
+
+.back-btn:hover{
+    -fx-background-color: transparent;
+    -fx-border-color: #ffffff;
+}
+
+
+
+.btn-resend-token
+{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #333333;
+}
+
+.btn-resend-token:hover
+{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #ed701b;
+}
+
+.slideShow-btn{
+                -fx-background-radius: 40em;
+                -fx-background-color : #ffffff;
+                -fx-min-width: 15px;
+                -fx-min-height: 15px;
+                -fx-max-width: 15px;
+                -fx-max-height: 15px;
+                
+
+}
+
+
+.notification-lbl{
+    -fx-background-radius: 40em;
+    -fx-background-color : #e84142;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-max-width: 30px;
+    -fx-max-height: 30px;
+    -fx-border-radius: 40em;
+    -fx-border-width: 2px;
+    -fx-alignment: center;
+}
+
+.slideShow-btn:hover{
+                -fx-background-radius: 40em;
+                -fx-background-color : #ffffff;
+                -fx-min-width: 15px;
+                -fx-min-height: 15px;
+                -fx-max-width: 15px;
+                -fx-max-height: 15px;
+                -fx-border-color: #FFAA70;
+                -fx-border-radius: 40em;
+                -fx-border-width: 2px;
+                
+
+}
+
+.slideShow-btn:pressed{
+                -fx-background-radius: 40em;
+                -fx-background-color : #FFAA70;
+                -fx-min-width: 15px;
+                -fx-min-height: 15px;
+                -fx-max-width: 15px;
+                -fx-max-height: 15px;
+}
+
+
+.btn-login-with-f{
+  -fx-background-radius: 30;
+  -fx-background-insets:0;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #3b5998;
+}
+
+.btn-login-with-f:hover
+{
+  -fx-background-radius: 30;
+  -fx-background-insets:0;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #333333;
+}
+
+.btn-login-with-t{
+  -fx-background-radius: 30;
+  -fx-background-insets:0;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #1da1f2;
+}
+
+.btn-login-with-t:hover
+{
+  -fx-background-radius: 30;
+  -fx-background-insets:0;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #333333;
+}
+
+
+.btn-login
+{
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #333333;
+}
+
+.btn-login:hover
+{
+  -fx-text-fill: #333333;
+  -fx-background-color: #ffffff;
+}
+
+.btn-forgot-pwd
+{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #333333;
+}
+
+.btn-forgot-pwd:hover
+{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #ffffff;
+}
+
+/* ModulesBar css  */
+.complaints-btn{
+    -fx-background-image: url('/Images/paper-plane.png');
+    -fx-background-color: linear-gradient(to top right, #ff7f50, #6a5acd);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+   
+}
+
+.complaints-btn:hover{
+    -fx-background-image: url('/Images/paper-plane.png');
+    -fx-background-color: #f71d1d;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+   
+}
+
+.complaints-btn:focused{
+    -fx-background-image: url('/Images/paper-plane.png');
+    -fx-background-color: #ED701B;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+   
+}
+
+.tools-btn{
+    -fx-background-image: url('/Images/tools.png');
+    -fx-background-color: linear-gradient(to top right, #ff7f50, #6a5acd);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+
+}
+
+.tools-btn:hover{
+    -fx-background-image: url('/Images/tools.png');
+    -fx-background-color: #e0c80f;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+
+}
+
+.tools-btn:focused{
+    -fx-background-image: url('/Images/tools.png');
+    -fx-background-color: #ED701B;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+
+}
+
+
+.services-btn{
+    -fx-background-image: url('/Images/shopping-cart.png');
+    -fx-background-color: linear-gradient(to top right, #ff7f50, #6a5acd);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+.services-btn:hover{
+    -fx-background-image: url('/Images/shopping-cart.png');
+    -fx-background-color: #ff163d;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+.services-btn:focused{
+    -fx-background-image: url('/Images/shopping-cart.png');
+    -fx-background-color: #ED701B;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+.events-btn{
+    -fx-background-image: url('/Images/earth-globe.png');
+    -fx-background-color: linear-gradient(to top right, #ff7f50, #6a5acd);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+
+.events-btn:hover{
+    -fx-background-image: url('/Images/earth-globe.png');
+    -fx-background-color: #1960b7;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+
+.events-btn:focused{
+    -fx-background-image: url('/Images/earth-globe.png');
+    -fx-background-color: #ED701B;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+
+.blog-btn{
+    -fx-background-image: url('/Images/blogger.png');
+    -fx-background-color: linear-gradient(to top right, #ff7f50, #6a5acd);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+.blog-btn:hover{
+    -fx-background-image: url('/Images/blogger.png');
+    -fx-background-color: #a93000;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+.blog-btn:focused{
+    -fx-background-image: url('/Images/blogger.png');
+    -fx-background-color: #ED701B;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+
+.volunteers-btn{
+    -fx-background-image: url('/Images/volunteer.png');
+    -fx-background-color: linear-gradient(to top right, #ff7f50, #6a5acd);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+
+.volunteers-btn:hover{
+    -fx-background-image: url('/Images/volunteer.png');
+    -fx-background-color: #41aa00;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+
+.volunteers-btn:focused{
+    -fx-background-image: url('/Images/volunteer.png');
+    -fx-background-color: #ED701B;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-style: solid ,solid;
+    -fx-border : solid 21px #f0f;
+    -fx-border-color: #ffffff;
+}
+.btn-login-with-p:hover
+{
+    -fx-background-radius: 30;
+  -fx-background-insets:0;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #1a0000;
+  
+}
