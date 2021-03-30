@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.E_bookAdminController">
+   <children>
+      <AnchorPane fx:id="rootPane" prefHeight="724.0" prefWidth="480.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="14.0" layoutY="433.0" onMouseClicked="#getSelected" prefHeight="277.0" prefWidth="980.0" stylesheets="@../../../../Meliora-java-meliora/src/gui/Tableau.css">
+               <columns>
+                  <TableColumn fx:id="colid" prefWidth="75.0" text="id" visible="false" />
+                  <TableColumn fx:id="colauteur" prefWidth="110.0" text="Auteur" />
+                  <TableColumn fx:id="coltitre" text="Titre" />
+                  <TableColumn fx:id="colgenre" minWidth="30.0" prefWidth="100.0" text="Genre" />
+                  <TableColumn fx:id="colcitation" prefWidth="75.0" text="Citation" visible="false" />
+                  <TableColumn fx:id="colimage" prefWidth="75.0" text="image" visible="false" />
+                  <TableColumn fx:id="colCitat" prefWidth="401.0" text="Citation liée au livre" />
+                  <TableColumn fx:id="col_nb_fav" prefWidth="134.0" text="Nombre de vues" />
+                  <TableColumn fx:id="colevaluation" prefWidth="100.0" text="Evaluation" />
+               </columns>
+            </TableView>
+            <TextField fx:id="tfauteur" layoutX="16.0" layoutY="122.0" prefHeight="31.0" prefWidth="274.0" promptText="Auteur...." />
+            <TextField fx:id="tftitre" layoutX="16.0" layoutY="184.0" prefHeight="31.0" prefWidth="274.0" promptText="Titre...." />
+            <TextField fx:id="tfgenre" layoutX="16.0" layoutY="246.0" prefHeight="31.0" prefWidth="274.0" promptText="Genre du livre...." />
+            <TextField fx:id="tfid" layoutX="16.0" layoutY="86.0" visible="false" />
+            <ChoiceBox fx:id="tfcitation" layoutX="16.0" layoutY="308.0" prefHeight="31.0" prefWidth="208.0" />
+            <Label fx:id="tflabauteur" layoutX="16.0" layoutY="153.0" prefHeight="31.0" prefWidth="274.0" textFill="RED" />
+            <Label fx:id="tflabtitre" layoutX="16.0" layoutY="215.0" prefHeight="31.0" prefWidth="274.0" textFill="RED" />
+            <Label fx:id="tflabgenre" layoutX="16.0" layoutY="277.0" prefHeight="31.0" prefWidth="274.0" textFill="RED" />
+            <Label layoutX="346.0" layoutY="91.0" prefHeight="70.0" prefWidth="187.0" text="E_BOOK" textFill="#a6dca8">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <Button layoutX="226.0" layoutY="308.0" mnemonicParsing="false" onAction="#addimage" prefHeight="31.0" prefWidth="63.0" text="Poster" />
+            <Button fx:id="btnajouter" layoutX="15.0" layoutY="351.0" mnemonicParsing="false" onAction="#SAVEbook" prefHeight="31.0" prefWidth="136.0" text="Add">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/images/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="btnsupprimer" layoutX="159.0" layoutY="351.0" mnemonicParsing="false" onAction="#DELETEbook" prefHeight="31.0" prefWidth="130.0" text="delete">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/images/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="btnmodifier" layoutX="180.0" layoutY="392.0" mnemonicParsing="false" onAction="#UPDATEbook" prefHeight="31.0" prefWidth="106.0" text="update">
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/images/modify.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <TextField fx:id="tfimage" layoutX="289.0" layoutY="308.0" prefHeight="31.0" prefWidth="63.0" visible="false" />
+            <TextField fx:id="search" layoutX="17.0" layoutY="392.0" onAction="#searchLabel" prefHeight="31.0" prefWidth="156.0" promptText="Search.." />
+            <PieChart fx:id="pie" layoutX="566.0" layoutY="3.0" prefHeight="418.0" prefWidth="512.0" />
+            <Button fx:id="btimprimer" layoutX="332.0" layoutY="308.0" mnemonicParsing="false" onAction="#Imprimer" prefHeight="31.0" prefWidth="142.0" text="Capture">
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/images/camera.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="btimprimer1" layoutX="332.0" layoutY="351.0" mnemonicParsing="false" onAction="#GetPDF" prefHeight="31.0" prefWidth="142.0" text="Imprimmer">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/images/download.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="btimprimer11" layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#jexcel" prefHeight="31.0" prefWidth="142.0" text="Excel">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/images/excel.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+         <stylesheets>
+            <URL value="@../../../../Meliora-java-meliora/src/gui/button.css" />
+            <URL value="@style2.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</VBox>

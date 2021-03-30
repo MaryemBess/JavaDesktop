@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="759.0" style="-fx-background-color: linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a);;" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DetailsplanningController">
+   <children>
+      <TableView fx:id="tvtache" layoutX="24.0" layoutY="133.0" onMouseClicked="#getselected" prefHeight="314.0" prefWidth="680.0" stylesheets="@Tableau.css">
+         <columns>
+            <TableColumn fx:id="tv_idt" prefWidth="111.99997520446777" text="Numero du tache" />
+            <TableColumn fx:id="tv_nom" prefWidth="162.4000244140625" text="Nom du tache" />
+            <TableColumn fx:id="tv_t" minWidth="0.0" prefWidth="91.20001220703125" text="Type" />
+            <TableColumn fx:id="tv_date" minWidth="0.0" prefWidth="132.800048828125" text="Date" />
+            <TableColumn fx:id="tv_etat" prefWidth="252.7999267578125" text="etat du tache" />
+         </columns>
+      </TableView>
+      <Label layoutX="6.0" layoutY="7.0" prefHeight="45.0" prefWidth="266.0" text="Detail du planning selectioné" textFill="#c71414">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Label>
+      <Line endX="578.0" endY="7.62939453125E-6" layoutX="115.0" layoutY="52.0" startX="-115.00001525878906" startY="7.62939453125E-6" />
+      <TextField fx:id="tv_idplanning" disable="true" editable="false" layoutX="24.0" layoutY="77.0" />
+      <Label layoutX="24.0" layoutY="53.0" text="Numero du planning" />
+      <Button fx:id="btn_check" layoutX="211.0" layoutY="77.0" mnemonicParsing="false" onAction="#xx" text="Afficher Details du planning" />
+      <Button fx:id="btn_terminé" disable="true" layoutX="300.0" layoutY="454.0" mnemonicParsing="false" onAction="#update_tache" text="Marquer comme terminé" />
+      <Label layoutX="465.0" layoutY="21.0" text="evaluer le planning" textFill="#098082" />
+      <Button fx:id="btn_like" layoutX="704.0" layoutY="247.0" mnemonicParsing="false" onAction="#like" onMouseClicked="#count3" text="+" />
+      <Button fx:id="btn_dis" layoutX="735.0" layoutY="247.0" mnemonicParsing="false" onAction="#dislike" onMouseClicked="#count4" text="-" />
+      <Button fx:id="btn_like1" layoutX="603.0" layoutY="17.0" mnemonicParsing="false" onAction="#like_p" onMouseClicked="#count1" text="+" />
+      <Button fx:id="btn_dis1" layoutX="639.0" layoutY="17.0" mnemonicParsing="false" onAction="#dislike_p" onMouseClicked="#count2" text="-" />
+   </children>
+</AnchorPane>

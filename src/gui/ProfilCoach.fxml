@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="407.0" prefWidth="712.0" style="-fx-background-color: linear-gradient(to left top, #075b77, #0f647c, #1a6e80, #277783, #348086, #368186, #378287, #398387, #307c84, #277581, #206d7e, #19667a); -fx-border-color: #82d7ff; -fx-border-width: 3; -fx-border-radius: 3;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfilCoachController">
+   <children>
+      <Text fill="#82d7ff" layoutX="280.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profil Coach" wrappingWidth="151.51171875">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="img" fitHeight="160.0" fitWidth="160.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="280.0" layoutY="100.0" text="Nom" textFill="WHITE">
+         <stylesheets>
+            <URL value="@Style.css" />
+            <URL value="@style2.css" />
+            <URL value="@Tableau.css" />
+         </stylesheets>
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="130.0" text="Prenom" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="160.0" text="Email" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="190.0" text="Telephone" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="220.0" text="Rating" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Lnom" layoutX="410.0" layoutY="100.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Lprenom" layoutX="410.0" layoutY="130.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Lemail" layoutX="410.0" layoutY="160.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Lphone" layoutX="410.0" layoutY="190.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="LnbRating" layoutX="580.0" layoutY="223.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Rating fx:id="Rating" disable="true" layoutX="400.0" layoutY="215.0" partialRating="true" />
+      <TableView fx:id="tableR" layoutX="119.0" layoutY="275.0" prefHeight="200.0" prefWidth="473.0" stylesheets="@Tableau.css">
+        <columns>
+          <TableColumn fx:id="coletat" prefWidth="75.0" text="Etat" />
+          <TableColumn fx:id="colrating" prefWidth="75.0" text="Rating" />
+            <TableColumn fx:id="colcomment" prefWidth="287.0" text="Comment" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnreview" layoutX="621.0" layoutY="445.0" onAction="#GotoReview" prefHeight="25.0" prefWidth="74.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #82d7ff; -fx-border-width: 2;" text="Review" textFill="#82d7ff" />
+      <FontAwesomeIcon fill="#82d7ff" iconName="REPLY" layoutX="29.0" layoutY="48.0" onMouseClicked="#close" size="2em" />
+   </children>
+   <padding>
+      <Insets bottom="8.0" />
+   </padding>
+</AnchorPane>

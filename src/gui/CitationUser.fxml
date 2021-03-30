@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CitationUserController">
+   <children>
+      <AnchorPane fx:id="rootPane" prefHeight="650.0" prefWidth="916.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="12.0" layoutY="103.0" onMouseClicked="#getSelected" prefHeight="540.0" prefWidth="890.0" stylesheets="@../../../../Meliora-java-meliora/src/gui/Tableau.css">
+               <columns>
+                  <TableColumn fx:id="colid" prefWidth="75.0" text="id" visible="false" />
+                  <TableColumn fx:id="colauter" prefWidth="200.0" text="Auteur" />
+                  <TableColumn fx:id="coltitre" prefWidth="595.0" text="Text" />
+                  <TableColumn fx:id="colgenre" prefWidth="94.0" text="genre" />
+               </columns>
+            </TableView>
+            <Label layoutX="344.0" layoutY="37.0" prefHeight="69.0" prefWidth="187.0" text="Citations" textFill="#a6dca8">
+               <font>
+                  <Font name="System Bold" size="42.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfid" layoutX="36.0" layoutY="66.0" visible="false" />
+            <TextField fx:id="tfauteur" layoutX="15.0" layoutY="97.0" prefHeight="31.0" prefWidth="247.0" promptText="Auteur...." visible="false" />
+            <TextField fx:id="tftitre" layoutX="15.0" layoutY="166.0" prefHeight="56.0" prefWidth="247.0" promptText="Texte...." visible="false" />
+            <TextField fx:id="tfgenre" layoutX="19.0" layoutY="263.0" prefHeight="31.0" prefWidth="247.0" promptText="Genre...." visible="false" />
+            <Label fx:id="tflabauteur" layoutX="15.0" layoutY="128.0" prefHeight="38.0" prefWidth="247.0" textFill="RED" visible="false" />
+            <Label fx:id="tflabtitre" layoutX="19.0" layoutY="222.0" prefHeight="38.0" prefWidth="247.0" textFill="RED" visible="false" />
+            <Label fx:id="tflabgenre" layoutX="19.0" layoutY="294.0" prefHeight="21.0" prefWidth="247.0" textFill="RED" visible="false" />
+            <TextField fx:id="search" layoutX="638.0" layoutY="56.0" onAction="#searchLabel" prefHeight="31.0" prefWidth="247.0" promptText="Search.." />
+            <Button fx:id="btnajouter" layoutX="374.0" layoutY="163.0" mnemonicParsing="false" onAction="#SAVECiattion" prefHeight="33.0" prefWidth="136.0" text="Add" visible="false">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Meliora-java-meliora/src/images/images/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnsupprimer" layoutX="374.0" layoutY="222.0" mnemonicParsing="false" onAction="#DELETEcitation" prefHeight="31.0" prefWidth="136.0" text="delete" visible="false">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Meliora-java-meliora/src/images/images/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnmodifier" layoutX="374.0" layoutY="279.0" mnemonicParsing="false" onAction="#UPDATEcitation" prefHeight="31.0" prefWidth="136.0" text="update" visible="false">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Meliora-java-meliora/src/images/images/modify.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <stylesheets>
+            <URL value="@../../../../Meliora-java-meliora/src/gui/button.css" />
+            <URL value="@style2.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</HBox>

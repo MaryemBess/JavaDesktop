@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="scenePane" prefHeight="742" prefWidth="800" style="-fx-background-color: linear-gradient(to bottom, #055878 0%, #378184 60%);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MusicPlayerController">
+   <children>
+      <Pane layoutX="17.0" layoutY="59.0" prefHeight="108.0" prefWidth="759.0">
+         <children>
+            <HBox layoutX="190.0" layoutY="42.0" prefHeight="25.0" prefWidth="418.0" style="-fx-background-radius: 50;" styleClass="search-background" stylesheets="@../../../../../Desktop/projet/src/Style/Style.css">
+               <children>
+                  <JFXTextField fx:id="search" onKeyReleased="#SearchSong" prefHeight="25.0" prefWidth="236.0" />
+                  <Pane prefHeight="25.0" prefWidth="44.0" />
+                  <JFXComboBox fx:id="cbmusic" prefHeight="25.0" prefWidth="156.0" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <ImageView fx:id="Startbtn" fitHeight="50.0" fitWidth="50.0" layoutX="277.0" layoutY="508.0" onMousePressed="#start_pause" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="next" fitHeight="50.0" fitWidth="50.0" layoutX="347.0" layoutY="508.0" onMousePressed="#nextSong" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fast_forward_48px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="speaker" fitHeight="50.0" fitWidth="50.0" layoutX="458.0" layoutY="508.0" onMousePressed="#mute" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="previous" fitHeight="50.0" fitWidth="50.0" layoutX="207.0" layoutY="508.0" onMousePressed="#previousSong" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rewind_48px.png" />
+         </image>
+      </ImageView>
+      <Slider fx:id="VolumeSlider" layoutX="528.0" layoutY="526.0" />
+      <Label fx:id="MusicName" layoutX="241.0" layoutY="479.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="468.0" layoutY="172.0" prefHeight="300.0" prefWidth="233.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: #065978; -fx-border-radius: 10; -fx-border-width: 2;">
+         <content>
+            <GridPane fx:id="gridpane" prefHeight="1.0" prefWidth="23.0" />
+         </content>
+      </ScrollPane>
+      <ImageView fx:id="AlbumImg" fitHeight="290.0" fitWidth="290.0" layoutX="168.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Favorite" fitHeight="50.0" fitWidth="50.0" layoutX="134.0" layoutY="508.0" onMousePressed="#FavUnfav" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

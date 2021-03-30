@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.E_bookUserController">
+   <children>
+      <AnchorPane fx:id="rootPane" prefHeight="650.0" prefWidth="916.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="12.0" layoutY="93.0" onMouseClicked="#getSelected" prefHeight="550.0" prefWidth="890.0" stylesheets="@../../../../Meliora-java-meliora/src/gui/Tableau.css">
+               <columns>
+                  <TableColumn fx:id="colid" prefWidth="75.0" text="id" visible="false" />
+                  <TableColumn fx:id="colauteur" prefWidth="110.0" text="Auteur" />
+                  <TableColumn fx:id="coltitre" text="Titre" />
+                  <TableColumn fx:id="colgenre" minWidth="30.0" prefWidth="100.0" text="Genre" />
+                  <TableColumn fx:id="colcitation" prefWidth="75.0" text="Citation" visible="false" />
+                  <TableColumn fx:id="colimage" prefWidth="75.0" text="image" visible="false" />
+                  <TableColumn fx:id="colCitat" prefWidth="380.0" text="Citation liée au livre" />
+                  <TableColumn fx:id="col_nb_fav" prefWidth="127.0" text="Nombre de vues" />
+                  <TableColumn fx:id="colevaluation" prefWidth="92.0" text="Evaluation" />
+               </columns>
+            </TableView>
+            <TextField fx:id="tfauteur" layoutX="14.0" layoutY="55.0" prefHeight="31.0" prefWidth="274.0" promptText="Auteur...." visible="false" />
+            <TextField fx:id="tftitre" layoutX="14.0" layoutY="117.0" prefHeight="31.0" prefWidth="274.0" promptText="Titre...." visible="false" />
+            <TextField fx:id="tfgenre" layoutX="14.0" layoutY="179.0" prefHeight="31.0" prefWidth="274.0" promptText="Genre du livre...." visible="false" />
+            <TextField fx:id="tfid" layoutX="14.0" layoutY="19.0" visible="false" />
+            <ChoiceBox fx:id="tfcitation" layoutX="14.0" layoutY="241.0" prefHeight="31.0" prefWidth="208.0" visible="false" />
+            <Label fx:id="tflabauteur" layoutX="14.0" layoutY="86.0" prefHeight="31.0" prefWidth="274.0" textFill="RED" visible="false" />
+            <Label fx:id="tflabtitre" layoutX="14.0" layoutY="148.0" prefHeight="31.0" prefWidth="274.0" textFill="RED" visible="false" />
+            <Label fx:id="tflabgenre" layoutX="14.0" layoutY="210.0" prefHeight="31.0" prefWidth="274.0" textFill="RED" visible="false" />
+            <Label layoutX="344.0" layoutY="24.0" prefHeight="70.0" prefWidth="187.0" text="E_BOOK" textFill="#a6dca8">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <Button layoutX="224.0" layoutY="241.0" mnemonicParsing="false" onAction="#addimage" prefHeight="31.0" prefWidth="63.0" text="Poster" visible="false" />
+            <Button fx:id="btnajouter" layoutX="13.0" layoutY="284.0" mnemonicParsing="false" onAction="#SAVEbook" prefHeight="31.0" prefWidth="136.0" text="Add" visible="false" />
+            <Button fx:id="btnsupprimer" layoutX="157.0" layoutY="284.0" mnemonicParsing="false" onAction="#DELETEbook" prefHeight="31.0" prefWidth="130.0" text="delete" visible="false" />
+            <Button fx:id="btnmodifier" layoutX="178.0" layoutY="325.0" mnemonicParsing="false" onAction="#UPDATEbook" prefHeight="31.0" prefWidth="106.0" text="update" visible="false" />
+            <TextField fx:id="tfimage" layoutX="287.0" layoutY="241.0" prefHeight="31.0" prefWidth="63.0" visible="false" />
+            <TextField fx:id="search" layoutX="680.0" layoutY="43.0" onAction="#searchLabel" prefHeight="31.0" prefWidth="208.0" promptText="Search.." />
+            <PieChart fx:id="pie" layoutX="514.0" layoutY="41.0" prefHeight="319.0" prefWidth="388.0" visible="false" />
+            <Button fx:id="btimprimer" layoutX="330.0" layoutY="241.0" mnemonicParsing="false" onAction="#Imprimer" prefHeight="31.0" prefWidth="142.0" text="Capture" visible="false" />
+            <Button fx:id="btimprimer1" layoutX="330.0" layoutY="284.0" mnemonicParsing="false" onAction="#GetPDF" prefHeight="31.0" prefWidth="142.0" text="Imprimmer" visible="false" />
+            <Button fx:id="btimprimer11" layoutX="330.0" layoutY="325.0" mnemonicParsing="false" onAction="#jexcel" prefHeight="31.0" prefWidth="142.0" text="Excel" visible="false" />
+         </children>
+         <stylesheets>
+            <URL value="@../../../../Meliora-java-meliora/src/gui/button.css" />
+            <URL value="@style2.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</VBox>
